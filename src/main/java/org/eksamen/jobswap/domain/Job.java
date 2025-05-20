@@ -1,4 +1,4 @@
-package org.eksamen.jobswap.Domain;
+package org.eksamen.jobswap.domain;
 
 import java.time.LocalDate;
 

@@ -8,6 +8,6 @@ module org.eksamen.jobswap {
 
     opens org.eksamen.jobswap to javafx.fxml;
     exports org.eksamen.jobswap;
-    exports org.eksamen.jobswap.Application;
-    opens org.eksamen.jobswap.Application to javafx.fxml;
+    exports org.eksamen.jobswap.application;
+    opens org.eksamen.jobswap.application to javafx.fxml;
 }

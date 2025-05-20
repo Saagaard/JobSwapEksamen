@@ -1,4 +1,4 @@
-package org.eksamen.jobswap.Domain;
+package org.eksamen.jobswap.domain;
 
 public class Zip {
     int zipCode;

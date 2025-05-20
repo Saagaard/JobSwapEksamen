@@ -1,6 +1,6 @@
-package org.eksamen.jobswap.Persistence;
+package org.eksamen.jobswap.persistence;
 
-import org.eksamen.jobswap.Domain.Zip;
+import org.eksamen.jobswap.domain.Zip;
 
 import java.util.List;
 

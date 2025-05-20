@@ -1,4 +1,4 @@
-package org.eksamen.jobswap.Application;
+package org.eksamen.jobswap.application;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

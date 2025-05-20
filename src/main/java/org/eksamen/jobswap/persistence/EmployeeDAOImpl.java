@@ -1,8 +1,8 @@
-package org.eksamen.jobswap.Persistence;
+package org.eksamen.jobswap.persistence;
 
-import org.eksamen.jobswap.Domain.Employee;
-import org.eksamen.jobswap.Domain.Zip;
-import org.eksamen.jobswap.Foundation.SqlConnection;
+import org.eksamen.jobswap.domain.Employee;
+import org.eksamen.jobswap.domain.Zip;
+import org.eksamen.jobswap.foundation.SqlConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

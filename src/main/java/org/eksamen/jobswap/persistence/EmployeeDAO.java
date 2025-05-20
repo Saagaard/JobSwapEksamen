@@ -1,8 +1,7 @@
-package org.eksamen.jobswap.Persistence;
+package org.eksamen.jobswap.persistence;
 
-import org.eksamen.jobswap.Domain.Employee;
+import org.eksamen.jobswap.domain.Employee;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public interface EmployeeDAO {

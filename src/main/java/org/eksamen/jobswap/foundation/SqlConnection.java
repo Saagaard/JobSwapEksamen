@@ -1,4 +1,4 @@
-package org.eksamen.jobswap.Foundation;
+package org.eksamen.jobswap.foundation;
 import java.sql.*;
 
 public class SqlConnection {
