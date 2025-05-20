@@ -69,7 +69,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>org.eksamen.jobswap/org.eksamen.jobswap.HelloApplication</mainClass>
+                            <mainClass>org.eksamen.jobswap/org.eksamen.jobswap.JobSwapApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
