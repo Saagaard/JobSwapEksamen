@@ -19,22 +19,11 @@ public class SearchController {
     @FXML
     private TextField jobTitleField, transportTimeField, salaryField, minimumYearField, minimumMonthField, maxYearField, maxMonthField;
 
-    public void initialize() throws Exception {
-        EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-        List<Employee> testEmployeeList = employeeDAO.readAll();
-
-        for (Employee employee : testEmployeeList) {
-            System.out.println(employee.getFirstName());
-            System.out.println(employee.getHomeAddressZip().getCityName());
-        }
-    }
-
     public void generateCriterias() {
 
 
 
     }
-
 
     public void switchToMatchMenu(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/eksamen/jobswap/ui/match.fxml"));
