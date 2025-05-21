@@ -36,12 +36,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 String email = rs.getString("fldEmail");
                 String homeAddress = rs.getString("fldHomeAddress");
                 Zip homeAddressZip = new Zip(rs.getInt("fldHomeAddressZip"));
-                Employee test = new Employee(employeeID, firstName, lastName, email, homeAddress, homeAddressZip);
-                System.out.println(test.getEmployeeID());
-                System.out.println(test.getFirstName());
-                System.out.println(test.getLastName());
 
-                //employees.add(new Employee(employeeID, firstName, lastName, email, homeAddress, homeAddressZip));
+                employees.add(new Employee(employeeID, firstName, lastName, email, homeAddress, homeAddressZip));
             }
 
             if (employees.isEmpty()) {

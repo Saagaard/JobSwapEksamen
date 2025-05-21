@@ -6,15 +6,21 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.eksamen.jobswap.domain.Employee;
 import org.eksamen.jobswap.persistence.EmployeeDAOImpl;
 
 import java.io.IOException;
+import java.util.List;
 
 public class SearchController {
 
     public void initialize() throws Exception {
         EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-        employeeDAO.readAll();
+        List<Employee> testEmployeeList = employeeDAO.readAll();
+
+        for (Employee employee : testEmployeeList) {
+            System.out.println(employee.getFirstName());
+        }
     }
 
 
