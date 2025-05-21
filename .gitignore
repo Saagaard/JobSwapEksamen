@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Credentials ###
+credentials.properties
+/resources/credentials.properties

@@ -4,11 +4,12 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import com.google.gson.*;
+import org.eksamen.jobswap.foundation.CredentialsManager;
 
 
 public class Distance {
 
-    private static final String API_KEY = "AIzaSyApftC6fzIHI63enwiApvXB17tPjCZpArE";
+    private static final String API_KEY = CredentialsManager.getMapsApiKey();
 
     public static void getTransportDetails(String homeAddress, String workAddress) throws Exception {
         String origin = homeAddress;

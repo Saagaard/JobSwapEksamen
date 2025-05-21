@@ -1,10 +1,11 @@
 package org.eksamen.jobswap.foundation;
+
 import java.sql.*;
 
 public class SqlConnection {
-    private static final String URL = "jdbc:sqlserver://162.19.246.106:1433;databaseName=jobbytte_test;encrypt=false;";
-    private static final String USER = "eksamen";
-    private static final String PASS = "7Gn334>EKWo£";
+    private static final String URL = CredentialsManager.getDbUrl();
+    private static final String USER = CredentialsManager.getDbUser();
+    private static final String PASS = CredentialsManager.getDbPass();
 
     private static Connection connection;
 
