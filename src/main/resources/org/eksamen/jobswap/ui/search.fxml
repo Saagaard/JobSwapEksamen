@@ -135,7 +135,7 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <Button layoutX="864.0" layoutY="449.0" mnemonicParsing="false" onAction="#switchToMatchMenu" prefHeight="216.0" prefWidth="370.0" text="Søg">
+      <Button layoutX="864.0" layoutY="449.0" mnemonicParsing="false" onAction="#generateCriteria" prefHeight="216.0" prefWidth="370.0" text="Søg">
          <font>
             <Font size="48.0" />
          </font>
