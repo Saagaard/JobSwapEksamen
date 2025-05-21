@@ -7,6 +7,7 @@ import org.eksamen.jobswap.foundation.SqlConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,11 +17,33 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         return false;
     }
 
-    public Employee read(int employeeID) {
-        return null;
+    public Employee read(int employeeID) throws Exception {
+        String sql = "SELECT * FROM tblEmployee WHERE fldEmployeeID = ?";
+
+        //try-with-resources lukker automatisk ResultSet
+        try (
+                Connection conn = SqlConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        ) {
+            pstmt.setInt(1, employeeID);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    int newEmployeeID = rs.getInt("fldEmployeeID");
+                    String firstName = rs.getString("fldFirstName");
+                    String lastName = rs.getString("fldLastName");
+                    String email = rs.getString("fldEmail");
+                    String homeAddress = rs.getString("fldHomeAddress");
+                    Zip homeAddressZip = new Zip(rs.getInt("fldHomeAddressZip"));
+
+                    return (new Employee(newEmployeeID, firstName, lastName, email, homeAddress, homeAddressZip));
+                }
+            }
+            return null;
+        }
     }
 
-    public List<Employee> readAll() throws Exception {
+        public List<Employee> readAll() throws Exception {
         List<Employee> employees = new ArrayList<>();
         String sql = "SELECT * FROM dbo.tblEmployee";
 

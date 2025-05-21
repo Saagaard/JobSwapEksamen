@@ -17,8 +17,27 @@ public class WorkplaceDAOImpl implements WorkplaceDAO {
         return false;
     }
 
-    public Workplace read(int workplaceID) {
-        return null;
+    public Workplace read(int workplaceID) throws Exception {
+        String sql = "SELECT * FROM tblWorkplace WHERE fldWorkplaceID = ?";
+
+        //try-with-resources lukker automatisk ResultSet
+        try (
+                Connection conn = SqlConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        ) {
+            pstmt.setInt(1, workplaceID);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    int newWorkplaceID = rs.getInt("fldWorkPlaceID");
+                    String workAddress = rs.getString("fldWorkAddress");
+                    Zip workAddressZip = new Zip(rs.getInt("fldWorkAddressZip"));
+
+                    return (new Workplace(newWorkplaceID, workAddress, workAddressZip));
+                }
+            }
+            return null;
+        }
     }
 
     public List<Workplace> readAll() throws Exception {

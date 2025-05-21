@@ -13,14 +13,14 @@ public class MatchSearch {
     }
 
     public static void employeeList() throws Exception {
-        EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl(); // initialisér employeeDAOImpl objektet.
-        List<Employee> testEmployeeList = employeeDAO.readAll(); // Lav en arrayliste, og kald readAll() metoden på objektet for at fylde listen med data
 
         JobDAOImpl jobDAO = new JobDAOImpl();
         List<Job> testJobList = jobDAO.readAll();
+        for (Job job : testJobList) {
+            System.out.println("Home address: " + job.employee.getHomeAddress());
+            System.out.println("Work address: " + job.workplace.getWorkAddress());
 
-        WorkplaceDAOImpl workplaceDAO = new WorkplaceDAOImpl();
-        List<Workplace> testWorkplaceList = workplaceDAO.readAll();
+        }
 
         List<Match> matchList = new ArrayList<>();
 

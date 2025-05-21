@@ -22,6 +22,8 @@ public class JobDAOImpl implements JobDAO {
     public List<Job> readAll() throws Exception {
         List<Job> jobs = new ArrayList<>();
         String sql = "SELECT * FROM dbo.tblJob";
+        EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+        WorkplaceDAOImpl workplaceDAO = new WorkplaceDAOImpl();
 
         //try-with-resources lukker automatisk ResultSet
         try (
@@ -37,7 +39,7 @@ public class JobDAOImpl implements JobDAO {
                 LocalDate employmentDate = rs.getDate("fldEmploymentDate").toLocalDate();
                 float monthlySalary = rs.getFloat("fldMonthlySalary");
 
-                jobs.add(new Job(jobID, employee, workplace, jobTitle, employmentDate, monthlySalary));
+                jobs.add(new Job(jobID, employeeDAO.read(employeeID), workplaceDAO.read(workplaceID), jobTitle, employmentDate, monthlySalary));
             }
 
             if (jobs.isEmpty()) {
