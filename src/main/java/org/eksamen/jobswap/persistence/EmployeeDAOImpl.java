@@ -21,7 +21,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     public List<Employee> readAll() throws Exception {
-        List<Employee> employees = new ArrayList<Employee>();
+        List<Employee> employees = new ArrayList<>();
         String sql = "SELECT * FROM dbo.tblEmployee";
 
         //try-with-resources lukker automatisk ResultSet
