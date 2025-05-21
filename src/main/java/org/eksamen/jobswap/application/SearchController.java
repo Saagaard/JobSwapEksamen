@@ -20,10 +20,6 @@ public class SearchController {
 
     Criteria criteria;
 
-    public void initialize() throws Exception {
-
-    }
-
     public void generateCriteria() {
 
         String jobTitle =  jobTitleField.getText();
