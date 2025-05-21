@@ -6,8 +6,7 @@ module org.eksamen.jobswap {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
-    opens org.eksamen.jobswap to javafx.fxml;
-    exports org.eksamen.jobswap;
-    exports org.eksamen.jobswap.application;
     opens org.eksamen.jobswap.application to javafx.fxml;
+    exports org.eksamen.jobswap.application;
+
 }
