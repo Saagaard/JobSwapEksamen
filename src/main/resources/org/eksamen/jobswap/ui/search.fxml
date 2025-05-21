@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" styleClass="kriterier" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.eksamen.jobswap.application.SearchController">
+   <children>
+      <GridPane hgap="20.0" layoutX="47.0" layoutY="145.0" prefHeight="527.0" prefWidth="752.0" styleClass="kriterier">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.46665649414066" minWidth="10.0" prefWidth="221.26670532226564" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.7333221435547" minWidth="10.0" prefWidth="205.53329467773438" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.53335571289057" minWidth="10.0" prefWidth="239.53335571289057" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField promptText="(Indtast jobtitel)" GridPane.columnIndex="1" />
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="57.0" text="0" />
+                  <Label text=" måneder">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="57.0" text="0" />
+                  <Label text=" år">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="57.0" text="0" />
+                  <Label text=" år">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="57.0" text="15" />
+                  <Label text=" %">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <TextField prefHeight="26.0" prefWidth="57.0" text="0" />
+                  <Label text=" minutter">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <children>
+                  <TextField layoutX="-1.0" layoutY="35.0" prefHeight="26.0" prefWidth="59.0" text="0" />
+                  <Label fx:id="anciennitetError" layoutY="65.0" prefHeight="18.0" prefWidth="230.0" text="Anciennitet skal være mindst 6 måneder" textFill="#ff3333" />
+                  <Label layoutX="56.0" layoutY="38.0" prefHeight="22.0" prefWidth="73.0" text=" måneder">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="24.0" layoutY="38.0" prefHeight="18.0" prefWidth="109.0" text="Jobtitel">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutX="22.0" layoutY="38.0" text="Transporttid til ny arbejdsplads">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Label layoutX="21.0" layoutY="37.0" text="Lønafvigelse">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+               <children>
+                  <Label layoutX="18.0" layoutY="36.0" prefHeight="26.0" prefWidth="166.0" text="Minimum Anciennitet">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+               <children>
+                  <Label layoutX="22.0" layoutY="35.0" prefHeight="26.0" prefWidth="166.0" text="Max Anciennitet">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+      <Button layoutX="864.0" layoutY="449.0" mnemonicParsing="false" onAction="#switchToMatchMenu" prefHeight="216.0" prefWidth="370.0" text="Søg">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Button>
+      <Label layoutX="299.0" layoutY="59.0" text="Match-kriterier">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

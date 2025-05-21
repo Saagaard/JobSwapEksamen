@@ -13,8 +13,8 @@ import java.io.IOException;
 public class SearchController {
 
     public void initialize() throws Exception {
-        EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
-        employeeDAO.readAll();
+        //EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+        //employeeDAO.readAll();
     }
 
 

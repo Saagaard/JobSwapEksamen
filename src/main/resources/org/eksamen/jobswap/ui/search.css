@@ -1,0 +1,5 @@
+.kriterier {
+    -fx-border-width: 2px;
+    -fx-border-color: black;
+-fx-padding: 20px;
+}
