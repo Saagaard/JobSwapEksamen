@@ -1,11 +1,14 @@
 package org.eksamen.jobswap.application;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.eksamen.jobswap.domain.Criteria;
 import org.eksamen.jobswap.domain.Employee;
 import org.eksamen.jobswap.persistence.EmployeeDAOImpl;
 
@@ -13,6 +16,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class SearchController {
+    @FXML
+    private TextField jobTitleField, transportTimeField, salaryField, minimumYearField, minimumMonthField, maxYearField, maxMonthField;
 
     public void initialize() throws Exception {
         EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
@@ -20,7 +25,14 @@ public class SearchController {
 
         for (Employee employee : testEmployeeList) {
             System.out.println(employee.getFirstName());
+            System.out.println(employee.getHomeAddressZip().getCityName());
         }
+    }
+
+    public void generateCriterias() {
+
+
+
     }
 
 

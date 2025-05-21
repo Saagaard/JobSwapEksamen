@@ -12,11 +12,15 @@ public class SqlConnection {
         // Forhindrer instantiation fra andre klasser
     }
 
-    public static Connection getConnection() throws Exception {
-        if (connection == null || connection.isClosed()) {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(URL, USER, PASS);
-        }
-        return connection;
+//    public static Connection getConnection() throws Exception {
+//        if (connection == null || connection.isClosed()) {
+//            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//            connection = DriverManager.getConnection(URL, USER, PASS);
+//        }
+//        return connection;
+//    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASS);
     }
 }

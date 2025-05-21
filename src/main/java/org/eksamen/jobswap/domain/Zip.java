@@ -5,29 +5,29 @@ import org.eksamen.jobswap.foundation.SqlConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Zip {
     int zipCode;
     String cityName;
 
-    public Zip(int zipCode) {
+    public Zip(int zipCode) throws Exception {
         this.zipCode = zipCode;
 
+        String sql = "SELECT fldCityName FROM tblZip WHERE fldZipCode = ?";
 
-//        List<Employee> employees = new ArrayList<Employee>();
-//        String sql = "SELECT fldCityName FROM tblZip WHERE ;
-//
-//        Connection conn = SqlConnection.getConnection();
-//        PreparedStatement pstmt = conn.prepareStatement(sql);
-//
-//        //try-with-resources lukker automatisk ResultSet
-//        try (ResultSet rs = pstmt.executeQuery()) {
-//            while (rs.next()) {
-//                this.cityName = rs.getString("fldCityName");
-//            }
-//        }
+        try (
+                Connection conn = SqlConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql)
+        ) {
+            pstmt.setInt(1, this.zipCode);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    this.cityName = rs.getString("fldCityName");
+                } else {
+                    throw new Exception("Zip code not found");
+                }
+            }
+        }
     }
 
     public int getZipCode() {

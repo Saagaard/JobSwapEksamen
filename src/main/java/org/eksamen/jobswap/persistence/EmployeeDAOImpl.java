@@ -24,11 +24,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         List<Employee> employees = new ArrayList<Employee>();
         String sql = "SELECT * FROM dbo.tblEmployee";
 
-        Connection conn = SqlConnection.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement(sql);
-
         //try-with-resources lukker automatisk ResultSet
-        try (ResultSet rs = pstmt.executeQuery()) {
+        try (
+                Connection conn = SqlConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+                ResultSet rs = pstmt.executeQuery()
+        ) {
             while (rs.next()) {
                 int employeeID = rs.getInt("fldEmployeeID");
                 String firstName = rs.getString("fldFirstName");
