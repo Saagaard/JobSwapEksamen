@@ -17,8 +17,10 @@ public class MatchSearch {
         JobDAOImpl jobDAO = new JobDAOImpl();
         List<Job> testJobList = jobDAO.readAll();
         for (Job job : testJobList) {
-            System.out.println("Home address: " + job.employee.getHomeAddress());
-            System.out.println("Work address: " + job.workplace.getWorkAddress());
+
+            for (int i = 0; i <= testJobList.size(); i++) {
+
+            }
 
         }
 
