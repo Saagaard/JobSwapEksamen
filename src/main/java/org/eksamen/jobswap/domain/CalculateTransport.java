@@ -11,7 +11,7 @@ public class CalculateTransport {
 
     private static final String API_KEY = CredentialsManager.getMapsApiKey();
 
-    public static TransportDetails calculateTransportDetails(String homeAddress, String workAddress, int homeZip, int workZip) throws Exception {
+    public TransportDetails calculateTransportDetails(String homeAddress, String workAddress, int homeZip, int workZip) throws Exception {
 
         String url = "https://routes.googleapis.com/directions/v2:computeRoutes?key=" + API_KEY;
 

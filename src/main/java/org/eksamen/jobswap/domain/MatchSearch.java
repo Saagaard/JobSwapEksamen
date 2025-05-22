@@ -14,6 +14,8 @@ public class MatchSearch {
         JobDAOImpl jobDAO = new JobDAOImpl();
         List<Job> jobList = jobDAO.readAll();
 
+        CalculateTransport calculateTransport = new CalculateTransport();
+
         //samle al data i en ny liste "matches" så vi kan regne med API metoden og videresende al data til match cards.
         List<Match> matchList = new ArrayList<>();
 
@@ -39,12 +41,29 @@ public class MatchSearch {
                 }
 
 
-//                    if (!criteria.getTransportTime() > Distance.getTransportDetails(job1.employee.getHomeAddress(), job2.workplace.getWorkAddress())
-//                            &&
-//                        !criteria.getTransportTime() > Distance.getTransportDetails(job2.employee.getHomeAddress(), job1.workplace.getWorkAddress()))
-//                    {
-//
-//                    }
+                // Transporttid
+                TransportDetails transportDetails1 = calculateTransport.calculateTransportDetails(
+                        job1.getEmployee().getHomeAddress(),
+                        job2.getWorkplace().getWorkAddress(),
+                        job1.getEmployee().getHomeAddressZip().getZipCode(),
+                        job2.getWorkplace().getWorkAddressZip().getZipCode()
+                );
+
+                TransportDetails transportDetails2 = calculateTransport.calculateTransportDetails(
+                        job2.getEmployee().getHomeAddress(),
+                        job1.getWorkplace().getWorkAddress(),
+                        job2.getEmployee().getHomeAddressZip().getZipCode(),
+                        job1.getWorkplace().getWorkAddressZip().getZipCode()
+                );
+
+                System.out.println("Transporttid 1: " + transportDetails1.getTravelTime());
+                System.out.println("Transporttid 2: " + transportDetails2.getTravelTime());
+                if (transportDetails1.getTravelTime() <= criteria.getTransportTime() && transportDetails2.getTravelTime() <= criteria.getTransportTime())
+                {
+                    System.out.println("Travel time matcher");
+                } else {
+                    continue;
+                }
 
                 // Lønafvigelse
                 System.out.println("Lønforskel i kr: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
