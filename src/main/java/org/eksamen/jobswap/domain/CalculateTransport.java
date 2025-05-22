@@ -51,7 +51,7 @@ public class CalculateTransport {
 
 
             String durationString = route.get("duration").getAsString();
-            int duration = Integer.parseInt(durationString.replace("s","")) / 60;
+            int duration = Integer.parseInt(durationString.replace("s","")) / 60; // fjern "S" fra output, og divider ned til minutter.
             int distanceMeters = route.get("distanceMeters").getAsInt();
 
 
