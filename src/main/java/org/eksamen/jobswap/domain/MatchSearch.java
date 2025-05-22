@@ -18,6 +18,7 @@ public class MatchSearch {
 
         //samle al data i en ny liste "matches" så vi kan regne med API metoden og videresende al data til match cards.
         List<Match> matchList = new ArrayList<>();
+        List<Integer> checkedJobIndexes = new ArrayList<>();
 
         for (int job1Index = 0; job1Index < jobList.size(); job1Index++) {
             Job job1 = jobList.get(job1Index);
@@ -25,7 +26,8 @@ public class MatchSearch {
 
             for (int i = 0; i < jobList.size(); i++) {
                 System.out.println("ny job2 iteration");
-                if (i == job1Index) { continue; }
+                if (i == job1Index || checkedJobIndexes.contains(i)) { continue; }
+
                 Job job2 = jobList.get(i);
 
                 // Jobtitel
@@ -90,7 +92,7 @@ public class MatchSearch {
                 matchList.add(new Match (job1, 20, job2, 20));
 
             }
-
+            checkedJobIndexes.add(job1Index);
         }
         System.out.println("Matches:");
         for (Match match : matchList) {
