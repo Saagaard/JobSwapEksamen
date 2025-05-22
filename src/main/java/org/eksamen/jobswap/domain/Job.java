@@ -1,6 +1,7 @@
 package org.eksamen.jobswap.domain;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Job {
     int jobID;
@@ -18,6 +19,11 @@ public class Job {
         this.jobTitle = jobTitle;
         this.employmentDate = employmentDate;
         this.monthlySalary = monthlySalary;
+    }
+
+    public int calculateSeniority() {
+        LocalDate now = LocalDate.now();
+        return Math.toIntExact(ChronoUnit.MONTHS.between(this.getEmploymentDate(), now));
     }
 
     public int getJobID() {

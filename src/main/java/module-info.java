@@ -5,9 +5,10 @@ module org.eksamen.jobswap {
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires java.net.http;
+    requires com.google.gson;
 
-    opens org.eksamen.jobswap to javafx.fxml;
-    exports org.eksamen.jobswap;
-    exports org.eksamen.jobswap.application;
     opens org.eksamen.jobswap.application to javafx.fxml;
+    exports org.eksamen.jobswap.application;
+
 }

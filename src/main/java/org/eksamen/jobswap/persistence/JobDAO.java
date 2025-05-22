@@ -11,7 +11,7 @@ public interface JobDAO {
 
     public Job read(int jobID) throws Exception; // Læse et enkelt produkt eller Read i CRUD
 
-    public List<Job> readAll(); // Læse alle produkter eller Read i CRUD
+    public List<Job> readAll() throws Exception; // Læse alle produkter eller Read i CRUD
 
     public void update(Job job); // Opdaterer et produkt eller Update i CRUD
 
