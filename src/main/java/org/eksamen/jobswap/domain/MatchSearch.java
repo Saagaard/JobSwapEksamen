@@ -10,9 +10,11 @@ import static java.lang.Math.abs;
 
 public class MatchSearch {
 
-    public static List<Match> createMatches(Criteria criteria) throws Exception {
+    public List<Match> createMatches(Criteria criteria) throws Exception {
         JobDAOImpl jobDAO = new JobDAOImpl();
         List<Job> jobList = jobDAO.readAll();
+
+        //samle al data i en ny liste "matches" så vi kan regne med API metoden og videresende al data til match cards.
         List<Match> matchList = new ArrayList<>();
 
         for (int job1Index = 0; job1Index < jobList.size(); job1Index++) {
@@ -21,7 +23,7 @@ public class MatchSearch {
 
             for (int i = 0; i < jobList.size(); i++) {
                 System.out.println("ny job2 iteration");
-                if (i == job1Index) { continue; } // Now we are correctly skipping matching the same job
+                if (i == job1Index) { continue; }
                 Job job2 = jobList.get(i);
 
                 // Jobtitel
@@ -45,8 +47,8 @@ public class MatchSearch {
 //                    }
 
                 // Lønafvigelse
-                System.out.println("salary difference: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
-                if (criteria.getSalaryDifference() > abs(job1.getMonthlySalary() - job2.getMonthlySalary())) {
+                System.out.println("Lønforskel i kr: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
+                if (calculateSalaryDifference(job1, job2) < criteria.getSalaryDifference()) {
                     System.out.println("Lønafvigelse matcher");
                 } else {
                     System.out.println("Lønafvigelse matcher IKKE");
@@ -71,7 +73,19 @@ public class MatchSearch {
             }
 
         }
+        System.out.println("Matches:");
+        for (Match match : matchList) {
+            System.out.println(match.job1.getEmployee().getFirstName() + " " + match.job1.getEmployee().getLastName());
+            System.out.println(match.job2.getEmployee().getFirstName() + " " + match.job2.getEmployee().getLastName());
+        }
         return matchList;
+    }
+
+    public float calculateSalaryDifference(Job job1, Job job2) {
+        float salaryDifference = abs(job1.getMonthlySalary() - job2.getMonthlySalary());
+        float percentageIncrease = (salaryDifference / job1.monthlySalary) * 100;
+        System.out.println("Procent stigning løn %: " + percentageIncrease);
+        return percentageIncrease;
     }
 
     public static void employeeList() throws Exception {
@@ -79,17 +93,9 @@ public class MatchSearch {
         JobDAOImpl jobDAO = new JobDAOImpl();
         List<Job> testJobList = jobDAO.readAll();
 
-
-        //samle al data i en ny liste "matches" så vi kan regne med API metoden og videresende al data til match cards.
     }
 
     public static void main(String[] args) throws Exception {
-        List<Match> matchList = createMatches(new Criteria("", 20, 5000, 12, 100));
-//        System.out.println("Matches:");
-//        for (Match match : matchList) {
-//            System.out.println(match.job1.getEmployee().getFirstName() + " " + match.job1.getEmployee().getLastName());
-//            System.out.println(match.job2.getEmployee().getFirstName() + " " + match.job2.getEmployee().getLastName());
-//        }
 
     }
 }

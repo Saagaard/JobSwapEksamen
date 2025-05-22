@@ -8,10 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
 import org.eksamen.jobswap.domain.Criteria;
 import org.eksamen.jobswap.domain.Match;
+import org.eksamen.jobswap.domain.MatchSearch;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SearchController {
@@ -20,7 +23,7 @@ public class SearchController {
 
     Criteria criteria;
 
-    public void generateCriteria() {
+    public void generateCriteria(ActionEvent event) throws Exception {
 
         String jobTitle =  jobTitleField.getText();
         int transportTime = Integer.parseInt(transportTimeField.getText());
@@ -35,21 +38,30 @@ public class SearchController {
         int maxSeniority = maxYear * 12 + maxMonth;
 
         this.criteria = new Criteria(jobTitle, transportTime, salary, minimumSeniority, maxSeniority);
-        searchMatches(this.criteria);
+        searchMatches(this.criteria, event);
 
     }
 
-    public List<Match> searchMatches(Criteria criteria) {
+    public void searchMatches(Criteria criteria, ActionEvent event) throws Exception {
         System.out.println("Jobtitel: " + criteria.getJobTitle());
         System.out.println("Minimum anciennitet: " + criteria.getMinimumSeniority());
         System.out.println("Max anciennitet: " + criteria.getMaxSeniority());
         System.out.println("Lønafvigelse: " + criteria.getSalaryDifference());
         System.out.println("Ny transporttid: " + criteria.getTransportTime());
+        MatchSearch matchSearch = new MatchSearch();
+        List <Match> matchList = matchSearch.createMatches(criteria);
 
-        //        MatchController matchController = loader.getController();
-        //menuController.setMatches(List<Match>);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/eksamen/jobswap/ui/match.fxml"));
+        Parent root = loader.load();
 
-        return null;
+        MatchController matchController = loader.getController();
+        matchController.setMatches(matchList);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/org/eksamen/jobswap/ui/match.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
     }
 
 
