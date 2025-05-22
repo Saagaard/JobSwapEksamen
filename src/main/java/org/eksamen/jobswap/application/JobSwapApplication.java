@@ -1,4 +1,4 @@
-package org.eksamen.jobswap;
+package org.eksamen.jobswap.application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
