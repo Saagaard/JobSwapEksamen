@@ -7,15 +7,19 @@ import com.google.gson.*;
 import org.eksamen.jobswap.foundation.CredentialsManager;
 
 
-public class Distance {
+public class CalculateTransport {
 
     private static final String API_KEY = CredentialsManager.getMapsApiKey();
 
-    public static void getTransportDetails(String homeAddress, String workAddress) throws Exception {
-        String origin = homeAddress;
-        String destination = workAddress;
+    public static TransportDetails calculateTransportDetails(String homeAddress, String workAddress, int homeZip, int workZip) throws Exception {
 
         String url = "https://routes.googleapis.com/directions/v2:computeRoutes?key=" + API_KEY;
+
+        String homeZipString = String.valueOf(homeZip);
+        String workZipString = String.valueOf(workZip);
+
+        String originAddress = homeAddress + " " + homeZipString;
+        String destinationAddress = workAddress + " " + workZipString;
 
         String requestBody = """
     {
@@ -28,7 +32,7 @@ public class Distance {
       "travelMode": "DRIVE",
       "routingPreference": "TRAFFIC_AWARE"
     }
-    """.formatted(origin, destination);
+    """.formatted(originAddress, destinationAddress);
 
         HttpClient client = HttpClient.newHttpClient();
 
@@ -45,14 +49,16 @@ public class Distance {
             JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
             JsonObject route = json.getAsJsonArray("routes").get(0).getAsJsonObject();
 
-            String duration = route.get("duration").getAsString();
+
+            String durationString = route.get("duration").getAsString();
+            int duration = Integer.parseInt(durationString.replace("s","")) / 60;
             int distanceMeters = route.get("distanceMeters").getAsInt();
 
-            System.out.println("Distance: " + (distanceMeters / 1000.0) + " km");
-            System.out.println("Duration (sekunder): " + duration);
-        } else {
-            System.out.println("Fejl: " + response.statusCode());
-            System.out.println(response.body());
+
+            return new TransportDetails(duration, distanceMeters);
+        }
+        else {
+            throw new Exception("Fejl i transportDetails, fejlkode: " + response.statusCode() + "\n" + response.body());
         }
     }
 }
