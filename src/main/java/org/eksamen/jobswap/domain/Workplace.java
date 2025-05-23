@@ -1,9 +1,9 @@
 package org.eksamen.jobswap.domain;
 
 public class Workplace {
-    int workplaceID;
-    String workAddress;
-    Zip workAddressZip;
+    private final int workplaceID;
+    private final String workAddress;
+    private final Zip workAddressZip;
 
     public Workplace(int workplaceID, String workAddress, Zip workAddressZip) {
         this.workplaceID = workplaceID;

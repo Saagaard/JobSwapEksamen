@@ -1,10 +1,10 @@
 package org.eksamen.jobswap.domain;
 
 public class Match {
-    Job job1;
-    int job1NewTransportTime;
-    Job job2;
-    int job2NewTransportTime;
+    private final Job job1;
+    private final int job1NewTransportTime;
+    private final Job job2;
+    private final int job2NewTransportTime;
 
     public Match(Job job1, int job1NewTransportTime, Job job2, int job2NewTransportTime) {
         this.job1 = job1;

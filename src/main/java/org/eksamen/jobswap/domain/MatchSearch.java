@@ -96,15 +96,15 @@ public class MatchSearch {
         }
         System.out.println("Matches:");
         for (Match match : matchList) {
-            System.out.println(match.job1.getEmployee().getFirstName() + " " + match.job1.getEmployee().getLastName());
-            System.out.println(match.job2.getEmployee().getFirstName() + " " + match.job2.getEmployee().getLastName());
+            System.out.println(match.getJob1().getEmployee().getFirstName() + " " + match.getJob1().getEmployee().getLastName());
+            System.out.println(match.getJob2().getEmployee().getFirstName() + " " + match.getJob2().getEmployee().getLastName());
         }
         return matchList;
     }
 
     public float calculateSalaryDifference(Job job1, Job job2) {
         float salaryDifference = abs(job1.getMonthlySalary() - job2.getMonthlySalary());
-        float percentageIncrease = (salaryDifference / job1.monthlySalary) * 100;
+        float percentageIncrease = (salaryDifference / job1.getMonthlySalary()) * 100;
         System.out.println("Procent stigning løn %: " + percentageIncrease);
         return percentageIncrease;
     }
