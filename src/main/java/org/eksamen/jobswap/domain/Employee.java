@@ -1,12 +1,12 @@
 package org.eksamen.jobswap.domain;
 
 public class Employee {
-    int employeeID;
-    String firstName;
-    String lastName;
-    String email;
-    String homeAddress;
-    Zip homeAddressZip;
+    private final int employeeID;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
+    private final String homeAddress;
+    private final Zip homeAddressZip;
 
     public Employee(int employeeID, String firstName, String lastName, String email, String homeAddress, Zip homeAddressZip) {
         this.employeeID = employeeID;

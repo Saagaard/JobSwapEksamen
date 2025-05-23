@@ -4,12 +4,12 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class Job {
-    int jobID;
-    Employee employee;
-    Workplace workplace;
-    String jobTitle;
-    LocalDate employmentDate;
-    float monthlySalary;
+    private final int jobID;
+    private final Employee employee;
+    private final Workplace workplace;
+    private final String jobTitle;
+    private final LocalDate employmentDate;
+    private final float monthlySalary;
 
 
     public Job(int jobID, Employee employee, Workplace workplace, String jobTitle, LocalDate employmentDate, float monthlySalary) {

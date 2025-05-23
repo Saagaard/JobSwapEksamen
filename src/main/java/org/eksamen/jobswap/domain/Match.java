@@ -1,14 +1,14 @@
 package org.eksamen.jobswap.domain;
 
 public class Match {
-    Job job1;
-    TransportDetails job1OldTransportDetails;
-    TransportDetails job1NewTransportDetails;
-    float job1SalaryDifference;
-    Job job2;
-    TransportDetails job2OldTransportDetails;
-    TransportDetails job2NewTransportDetails;
-    float job2SalaryDifference;
+    private final Job job1;
+    private final TransportDetails job1OldTransportDetails;
+    private final TransportDetails job1NewTransportDetails;
+    private final float job1SalaryDifference;
+    private final Job job2;
+    private final TransportDetails job2OldTransportDetails;
+    private final TransportDetails job2NewTransportDetails;
+    private final float job2SalaryDifference;
 
     public Match(Job job1, TransportDetails job1OldTransportDetails, TransportDetails job1NewTransportDetails, float job1SalaryDifference, Job job2, TransportDetails job2OldTransportDetails, TransportDetails job2NewTransportDetails, float job2SalaryDifference) {
         this.job1 = job1;

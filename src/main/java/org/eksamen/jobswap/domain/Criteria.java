@@ -1,11 +1,11 @@
 package org.eksamen.jobswap.domain;
 
 public class Criteria {
-    String jobTitle;
-    int transportTime;
-    float salaryDifference;
-    int minimumSeniority;
-    int maxSeniority;
+    private final String jobTitle;
+    private final int transportTime;
+    private final float salaryDifference;
+    private final int minimumSeniority;
+    private final int maxSeniority;
 
     public Criteria(String jobTitle, int transportTime, float salaryDifference, int minimumSeniority, int maxSeniority) {
         this.jobTitle = jobTitle;
