@@ -7,6 +7,7 @@ module org.eksamen.jobswap {
     requires java.sql;
     requires java.net.http;
     requires com.google.gson;
+    requires java.desktop;
 
     opens org.eksamen.jobswap.application to javafx.fxml;
     exports org.eksamen.jobswap.application;

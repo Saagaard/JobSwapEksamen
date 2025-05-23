@@ -29,6 +29,7 @@ public class MatchSearch {
                 if (i == job1Index || checkedJobIndexes.contains(i)) { continue; }
 
                 Job job2 = jobList.get(i);
+                System.out.println(job1.getEmployee().getFirstName() + " og " + job2.getEmployee().getFirstName());
 
                 // Jobtitel
                 if (!criteria.getJobTitle().isEmpty()) {
@@ -42,25 +43,43 @@ public class MatchSearch {
                     System.out.println("Ingen jobtitel valgt");
                 }
 
+                // Transporttid til ny arbejdsplads START
+                TransportDetails oldTransportDetails1 = calculateTransport.calculateTransportDetails(
+                        job1.getEmployee().getHomeAddress(),
+                        job1.getWorkplace().getWorkAddress(),
+                        job1.getEmployee().getHomeAddressZip().getZipCode(),
+                        job1.getWorkplace().getWorkAddressZip().getZipCode()
+                );
 
-                // Transporttid
-                TransportDetails transportDetails1 = calculateTransport.calculateTransportDetails(
+                TransportDetails oldTransportDetails2 = calculateTransport.calculateTransportDetails(
+                        job2.getEmployee().getHomeAddress(),
+                        job2.getWorkplace().getWorkAddress(),
+                        job2.getEmployee().getHomeAddressZip().getZipCode(),
+                        job2.getWorkplace().getWorkAddressZip().getZipCode()
+                );
+                // Transporttid til ny arbejdsplads SLUT
+
+                // Transporttid til ny arbejdsplads START
+                TransportDetails newTransportDetails1 = calculateTransport.calculateTransportDetails(
                         job1.getEmployee().getHomeAddress(),
                         job2.getWorkplace().getWorkAddress(),
                         job1.getEmployee().getHomeAddressZip().getZipCode(),
                         job2.getWorkplace().getWorkAddressZip().getZipCode()
                 );
 
-                TransportDetails transportDetails2 = calculateTransport.calculateTransportDetails(
+                TransportDetails newTransportDetails2 = calculateTransport.calculateTransportDetails(
                         job2.getEmployee().getHomeAddress(),
                         job1.getWorkplace().getWorkAddress(),
                         job2.getEmployee().getHomeAddressZip().getZipCode(),
                         job1.getWorkplace().getWorkAddressZip().getZipCode()
                 );
+                // Transporttid til ny arbejdsplads SLUT
 
-                System.out.println("Transporttid 1: " + transportDetails1.getTravelTime());
-                System.out.println("Transporttid 2: " + transportDetails2.getTravelTime());
-                if (transportDetails1.getTravelTime() <= criteria.getTransportTime() && transportDetails2.getTravelTime() <= criteria.getTransportTime())
+
+                // Transporttid check
+                System.out.println("Transporttid 1: " + newTransportDetails1.getTravelTime());
+                System.out.println("Transporttid 2: " + newTransportDetails2.getTravelTime());
+                if (newTransportDetails1.getTravelTime() <= criteria.getTransportTime() && newTransportDetails2.getTravelTime() <= criteria.getTransportTime())
                 {
                     System.out.println("Travel time matcher");
                 } else {
@@ -68,6 +87,8 @@ public class MatchSearch {
                 }
 
                 // Lønafvigelse
+                float salaryDifference1 = (job2.getMonthlySalary() - job1.getMonthlySalary());
+                float salaryDifference2 = (job1.getMonthlySalary() - job2.getMonthlySalary());
                 System.out.println("Lønforskel i kr: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
                 if (calculateSalaryDifference(job1, job2) < criteria.getSalaryDifference()) {
                     System.out.println("Lønafvigelse matcher");
@@ -89,7 +110,7 @@ public class MatchSearch {
                 }
 
                 System.out.println("Match fundet!!!!!!");
-                matchList.add(new Match (job1, 20, job2, 20));
+                matchList.add(new Match (job1, oldTransportDetails1, newTransportDetails1, salaryDifference1, job2, oldTransportDetails2, newTransportDetails2, salaryDifference2));
 
             }
             checkedJobIndexes.add(job1Index);
