@@ -14,8 +14,6 @@ import javafx.stage.Stage;
 import org.eksamen.jobswap.domain.*;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.abs;
@@ -78,7 +76,9 @@ public class MatchController {
                 matchGrid.add(matchContainer, column, row);
 
                 StackPane employee1Name = new StackPane();
+                employee1Name.getStyleClass().add("employeeNameContainer");
                 StackPane employee2Name = new StackPane();
+                employee2Name.getStyleClass().add("employeeNameContainer");
                 matchContainer.add(employee1Name, 0, 0);
                 matchContainer.add(employee2Name, 1, 0);
 

@@ -59,15 +59,15 @@
                            <font>
                               <Font size="13.0" />
                            </font></Label>
-                        <Label fx:id="job1Workplace" layoutX="142.0" layoutY="44.0" text="Danfoss Nordborg">
+                        <Label fx:id="job1Workplace" layoutX="142.0" layoutY="48.0" text="Danfoss Nordborg">
                            <font>
                               <Font size="13.0" />
                            </font></Label>
-                        <Label fx:id="job1TransportTime" layoutX="142.0" layoutY="74.0" text="12 minutter">
+                        <Label fx:id="job1TransportTime" layoutX="142.0" layoutY="77.0" text="12 minutter">
                            <font>
                               <Font size="13.0" />
                            </font></Label>
-                        <Label fx:id="job1TimeSaved" layoutX="142.0" layoutY="101.0" text="43 minutter">
+                        <Label fx:id="job1TimeSaved" layoutX="142.0" layoutY="105.0" text="43 minutter">
                            <font>
                               <Font size="13.0" />
                            </font></Label>

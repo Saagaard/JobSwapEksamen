@@ -1,6 +1,13 @@
 .matchWrapper {
-    -fx-background-color: #4abef1;
     -fx-cursor: hand;
+    -fx-background-color: #4abef1;
+    -fx-border-width: 1px;
+    -fx-border-color: black;
+}
+
+.employeeNameContainer {
+    -fx-border-width: 1px;
+    -fx-border-color: black;
 }
 
 .employeeName {
@@ -10,4 +17,7 @@
 
 .employeeDetails {
     -fx-padding: 10 0 0 10;
+    -fx-background-color: lightblue;
+    -fx-border-width: 1px;
+    -fx-border-color: black;
 }
