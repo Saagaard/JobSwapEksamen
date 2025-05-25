@@ -53,7 +53,7 @@ public class MatchController {
 
                 matchContainer.setOnMouseClicked(event -> {
                     try {
-                        switchToMatchDetailsMenu(event);
+                        switchToMatchDetailsMenu(event, match);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -124,10 +124,13 @@ public class MatchController {
         }
     }
 
-    public void switchToMatchDetailsMenu(MouseEvent event) throws IOException {
+    public void switchToMatchDetailsMenu(MouseEvent event, Match match) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/eksamen/jobswap/ui/matchdetails.fxml"));
         Parent root = loader.load();
+
+        MatchDetailsController matchDetailsController = loader.getController();
+        matchDetailsController.setMatch(match);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
