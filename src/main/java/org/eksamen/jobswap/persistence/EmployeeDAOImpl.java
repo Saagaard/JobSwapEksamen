@@ -18,7 +18,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     public Employee read(int employeeID) throws Exception {
-        String sql = "SELECT * FROM tblEmployee WHERE fldEmployeeID = ?";
+        String sql = "EXECUTE read_EmployeeID @employeeID = ?";
 
         //try-with-resources lukker automatisk ResultSet
         try (
@@ -45,7 +45,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
         public List<Employee> readAll() throws Exception {
         List<Employee> employees = new ArrayList<>();
-        String sql = "SELECT * FROM dbo.tblEmployee";
+        String sql = "EXECUTE readAll_Employee";
 
         //try-with-resources lukker automatisk ResultSet
         try (

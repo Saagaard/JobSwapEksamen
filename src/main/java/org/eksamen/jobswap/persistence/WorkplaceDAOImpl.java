@@ -18,7 +18,7 @@ public class WorkplaceDAOImpl implements WorkplaceDAO {
     }
 
     public Workplace read(int workplaceID) throws Exception {
-        String sql = "SELECT * FROM tblWorkplace WHERE fldWorkplaceID = ?";
+        String sql = "EXECUTE read_WorkplaceID @workplaceID = ?";
 
         //try-with-resources lukker automatisk ResultSet
         try (
@@ -42,7 +42,7 @@ public class WorkplaceDAOImpl implements WorkplaceDAO {
 
     public List<Workplace> readAll() throws Exception {
         List<Workplace> workplaces = new ArrayList<>();
-        String sql = "SELECT * FROM dbo.tblWorkplace";
+        String sql = "EXECUTE readAll_Workplace";
 
         //try-with-resources lukker automatisk ResultSet
         try (

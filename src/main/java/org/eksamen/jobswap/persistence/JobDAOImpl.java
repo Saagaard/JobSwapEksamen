@@ -21,7 +21,7 @@ public class JobDAOImpl implements JobDAO {
 
     public List<Job> readAll() throws Exception {
         List<Job> jobs = new ArrayList<>();
-        String sql = "SELECT * FROM dbo.tblJob";
+        String sql = "EXECUTE readAll_Job";
         EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
         WorkplaceDAOImpl workplaceDAO = new WorkplaceDAOImpl();
 

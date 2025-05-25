@@ -13,7 +13,7 @@ public class Zip {
     public Zip(int zipCode) throws Exception {
         this.zipCode = zipCode;
 
-        String sql = "SELECT fldCityName FROM tblZip WHERE fldZipCode = ?";
+        String sql = "EXECUTE read_CityName_Zip @zipCode = ?";
 
         try (
                 Connection conn = SqlConnection.getConnection();
