@@ -18,14 +18,13 @@ public class MatchSearch {
 
         //samle al data i en ny liste "matches" så vi kan regne med API metoden og videresende al data til match cards.
         List<Match> matchList = new ArrayList<>();
+        // Liste over jobs der allerede er tjekket
         List<Integer> checkedJobIndexes = new ArrayList<>();
 
         for (int job1Index = 0; job1Index < jobList.size(); job1Index++) {
             Job job1 = jobList.get(job1Index);
-            System.out.println("ny job1 iteration");
 
             for (int i = 0; i < jobList.size(); i++) {
-                System.out.println("ny job2 iteration");
                 if (i == job1Index || checkedJobIndexes.contains(i)) { continue; }
 
                 Job job2 = jobList.get(i);
@@ -41,6 +40,29 @@ public class MatchSearch {
                     }
                 } else {
                     System.out.println("Ingen jobtitel valgt");
+                }
+
+                // Lønafvigelse
+                float salaryDifference1 = (job2.getMonthlySalary() - job1.getMonthlySalary());
+                float salaryDifference2 = (job1.getMonthlySalary() - job2.getMonthlySalary());
+                System.out.println("Lønforskel i kr: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
+                if (calculateSalaryDifference(job1, job2) < criteria.getSalaryDifference()) {
+                    System.out.println("Lønafvigelse matcher");
+                } else {
+                    System.out.println("Lønafvigelse matcher IKKE");
+                    continue;
+                }
+
+                // Minimum og max anciennitet
+                System.out.println("Job1 anciennitet: " + job1.calculateSeniority() + " Job2 anciennitet: " + job2.calculateSeniority());
+
+                if (job1.calculateSeniority() >= criteria.getMinimumSeniority() && job2.calculateSeniority() >= criteria.getMinimumSeniority()
+                        && job1.calculateSeniority() <= criteria.getMaxSeniority() && job2.calculateSeniority() <= criteria.getMaxSeniority()){
+
+                    System.out.println("Minimum og max anciennitet matcher");
+                } else {
+                    System.out.println("Minimum og max anciennitet matcher IKKE");
+                    continue;
                 }
 
                 // Transporttid til ny arbejdsplads START
@@ -81,31 +103,9 @@ public class MatchSearch {
                 System.out.println("Transporttid 2: " + newTransportDetails2.getTravelTime());
                 if (newTransportDetails1.getTravelTime() <= criteria.getTransportTime() && newTransportDetails2.getTravelTime() <= criteria.getTransportTime())
                 {
-                    System.out.println("Travel time matcher");
+                    System.out.println("Transporttid matcher");
                 } else {
-                    continue;
-                }
-
-                // Lønafvigelse
-                float salaryDifference1 = (job2.getMonthlySalary() - job1.getMonthlySalary());
-                float salaryDifference2 = (job1.getMonthlySalary() - job2.getMonthlySalary());
-                System.out.println("Lønforskel i kr: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
-                if (calculateSalaryDifference(job1, job2) < criteria.getSalaryDifference()) {
-                    System.out.println("Lønafvigelse matcher");
-                } else {
-                    System.out.println("Lønafvigelse matcher IKKE");
-                    continue;
-                }
-
-                // Minimum og max anciennitet
-                System.out.println("Job1 anciennitet: " + job1.calculateSeniority() + " Job2 anciennitet: " + job2.calculateSeniority());
-
-                if (job1.calculateSeniority() > criteria.getMinimumSeniority() && job2.calculateSeniority() > criteria.getMinimumSeniority()
-                    && job1.calculateSeniority() < criteria.getMaxSeniority() && job2.calculateSeniority() < criteria.getMaxSeniority()){
-
-                    System.out.println("Minimum og max anciennitet matcher");
-                } else {
-                    System.out.println("Minimum og max anciennitet matcher IKKE");
+                    System.out.println("Transporttid matcher IKKE");
                     continue;
                 }
 
@@ -119,6 +119,7 @@ public class MatchSearch {
         for (Match match : matchList) {
             System.out.println(match.getJob1().getEmployee().getFirstName() + " " + match.getJob1().getEmployee().getLastName());
             System.out.println(match.getJob2().getEmployee().getFirstName() + " " + match.getJob2().getEmployee().getLastName());
+            System.out.println("-----------------");
         }
         return matchList;
     }
@@ -130,14 +131,4 @@ public class MatchSearch {
         return percentageIncrease;
     }
 
-    public static void employeeList() throws Exception {
-
-        JobDAOImpl jobDAO = new JobDAOImpl();
-        List<Job> testJobList = jobDAO.readAll();
-
-    }
-
-    public static void main(String[] args) throws Exception {
-
-    }
 }
