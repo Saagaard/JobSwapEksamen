@@ -28,6 +28,10 @@ public class MatchSearch {
                 if (i == job1Index || checkedJobIndexes.contains(i)) { continue; }
 
                 Job job2 = jobList.get(i);
+                if (job1.getWorkplace().getWorkplaceID() == job2.getWorkplace().getWorkplaceID()){
+                    continue;
+                }
+
                 System.out.println(job1.getEmployee().getFirstName() + " og " + job2.getEmployee().getFirstName());
 
                 // Jobtitel
