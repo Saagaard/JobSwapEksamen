@@ -135,7 +135,7 @@ public class MatchController {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/org/eksamen/jobswap/ui/match.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/org/eksamen/jobswap/ui/matchdetails.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }
