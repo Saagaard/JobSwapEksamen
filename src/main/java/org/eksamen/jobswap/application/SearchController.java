@@ -40,7 +40,12 @@ public class SearchController {
 
         // Transporttid
         if (transportTimeField.getText().isEmpty()) {
-            transportTimeField.setText("0");
+            transportError.setText("Transporttid skal udfyldes");
+            validFields = false;
+        } else if (!isDigits(transportTimeField.getText())) {
+            transportError.setText("Transporttid skal være et tal");
+            transportTimeField.setText("");
+            validFields = false;
         } else {
             int transportInput = Integer.parseInt(transportTimeField.getText());
             if (transportInput < 0) {
@@ -53,7 +58,11 @@ public class SearchController {
 
         // Lønafvigelse
         if (salaryField.getText().isEmpty()) {
-            salaryError.setText("Lønafvigelse skal være udfyldt");
+            salaryError.setText("Lønafvigelse skal udfyldes");
+            validFields = false;
+        } else if (!isDigits(salaryField.getText())) {
+            salaryError.setText("Lønafvigelse skal være et tal");
+            salaryField.setText("");
             validFields = false;
         } else {
             int salaryInput = Integer.parseInt(salaryField.getText());
@@ -66,38 +75,48 @@ public class SearchController {
         }
 
         // Minimum anciennitet
-        if(minimumYearField.getText().isEmpty()) {
-            minimumYearField.setText("0");
-            seniorityError1.setText("");
-        }
-        if(minimumMonthField.getText().isEmpty()) {
-            minimumMonthField.setText("0");
-            seniorityError1.setText("");
-        }
-        int minimumSeniorityInput = (Integer.parseInt(minimumYearField.getText()) * 12 + Integer.parseInt(minimumMonthField.getText()));
-        if (minimumSeniorityInput < 6) {
-            seniorityError1.setText("Anciennitet skal være mindst 6 måneder");
+        int minimumSeniorityInput = 0;
+
+        if (minimumYearField.getText().isEmpty() || minimumMonthField.getText().isEmpty()) {
+            seniorityError1.setText("Anciennitet skal udfyldes");
             validFields = false;
-        } else {
-            seniorityError1.setText("");
+        } else if (!isDigits(minimumYearField.getText()) || !isDigits(minimumMonthField.getText())) {
+            minimumYearField.setText("");
+            minimumMonthField.setText("");
+            seniorityError1.setText("Anciennitet skal være et tal");
+            validFields = false;
+        } else  {
+            minimumSeniorityInput = (Integer.parseInt(minimumYearField.getText()) * 12 + Integer.parseInt(minimumMonthField.getText()));
+            if (minimumSeniorityInput < 6) {
+                seniorityError1.setText("Anciennitet skal være mindst 6 måneder");
+                validFields = false;
+            } else {
+                seniorityError1.setText("");
+            }
         }
 
+
         // Max anciennitet
-        if(maxYearField.getText().isEmpty()) {
-            maxYearField.setText("0");
-            seniorityError2.setText("");
-        }
-        if(maxMonthField.getText().isEmpty()) {
-            maxMonthField.setText("0");
-            seniorityError2.setText("");
-        }
-        int maxSeniorityInput = (Integer.parseInt(maxYearField.getText()) * 12 + Integer.parseInt(maxMonthField.getText()));
-        if (maxSeniorityInput <= minimumSeniorityInput) {
-            seniorityError2.setText("Max anciennitet skal være over minimum");
+        int maxSeniorityInput = 0;
+
+        if (maxYearField.getText().isEmpty() || maxMonthField.getText().isEmpty()) {
+            seniorityError2.setText("Anciennitet skal udfyldes");
             validFields = false;
-        } else {
-            seniorityError2.setText("");
+        } else if (!isDigits(maxYearField.getText()) || !isDigits(maxMonthField.getText())) {
+            maxYearField.setText("");
+            maxMonthField.setText("");
+            seniorityError2.setText("Anciennitet skal være et tal");
+            validFields = false;
+        } else  {
+            maxSeniorityInput = (Integer.parseInt(maxYearField.getText()) * 12 + Integer.parseInt(maxMonthField.getText()));
+            if (maxSeniorityInput < minimumSeniorityInput) {
+                seniorityError2.setText("Max anciennitet skal være over minimum");
+                validFields = false;
+            } else {
+                seniorityError2.setText("");
+            }
         }
+
 
         if (validFields) {
             generateCriteria(event);
@@ -144,6 +163,13 @@ public class SearchController {
         scene.getStylesheets().add(getClass().getResource("/org/eksamen/jobswap/ui/match.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static boolean isDigits(String s) {
+
+        // Regex to check if the string
+        // contains only digits
+        return s.matches("[0-9]+");
     }
 
 }
