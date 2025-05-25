@@ -42,14 +42,14 @@ public class MatchDetailsController {
         } else {
             job1SalaryDifference.getStyleClass().add("red");
         }
-        job1Workplace.setText(match.getJob1().getWorkplace().getWorkAddress() + ", " + match.getJob1().getWorkplace().getWorkAddressZip().getZipCode() + " " + match.getJob1().getWorkplace().getWorkAddressZip().getCityName());
+        job1Workplace.setText(match.getJob2().getWorkplace().getWorkAddress() + ", " + match.getJob2().getWorkplace().getWorkAddressZip().getZipCode() + " " + match.getJob2().getWorkplace().getWorkAddressZip().getCityName());
         job1TransportTime.setText(match.getJob1NewTransportDetails().getTravelTime() + " minutter");
         job1TimeSaved.setText(abs((match.getJob1OldTransportDetails().getTravelTime() - match.getJob1NewTransportDetails().getTravelTime()) * 2) + " minutter");
         job1EmployeeID.setText(match.getJob1().getEmployee().getEmployeeID() + "");
-        job1Address.setText(match.getJob1().getEmployee().getHomeAddress());
+        job1Address.setText(match.getJob1().getEmployee().getHomeAddress() + ", " + match.getJob1().getEmployee().getHomeAddressZip().getZipCode() + " " + match.getJob1().getEmployee().getHomeAddressZip().getCityName());
         job1Email.setText(match.getJob1().getEmployee().getEmail());
         job1Title.setText(match.getJob1().getJobTitle());
-        job1Seniority.setText(match.getJob1().calculateSeniority() / 12 + " år, " + match.getJob1().calculateSeniority() % 12 + " måneder");
+        job1Seniority.setText(match.getJob1().calculateSeniority() / 12 + " år og " + match.getJob1().calculateSeniority() % 12 + " måneder");
         job1Salary.setText(match.getJob1().getMonthlySalary() + " kr");
 
         job2Name.setText(match.getJob2().getEmployee().getFirstName() + " " + match.getJob2().getEmployee().getLastName());
@@ -59,14 +59,14 @@ public class MatchDetailsController {
         } else {
             job2SalaryDifference.getStyleClass().add("red");
         }
-        job2Workplace.setText(match.getJob2().getWorkplace().getWorkAddress() + ", " + match.getJob2().getWorkplace().getWorkAddressZip().getZipCode() + " " + match.getJob2().getWorkplace().getWorkAddressZip().getCityName());
+        job2Workplace.setText(match.getJob1().getWorkplace().getWorkAddress() + ", " + match.getJob1().getWorkplace().getWorkAddressZip().getZipCode() + " " + match.getJob1().getWorkplace().getWorkAddressZip().getCityName());
         job2TransportTime.setText(match.getJob2NewTransportDetails().getTravelTime() + " minutter");
         job2TimeSaved.setText(abs((match.getJob2OldTransportDetails().getTravelTime() - match.getJob2NewTransportDetails().getTravelTime()) * 2) + " minutter");
         job2EmployeeID.setText(match.getJob2().getEmployee().getEmployeeID() + "");
-        job2Address.setText(match.getJob2().getEmployee().getHomeAddress());
+        job2Address.setText(match.getJob2().getEmployee().getHomeAddress() + ", " + match.getJob2().getEmployee().getHomeAddressZip().getZipCode() + " " + match.getJob2().getEmployee().getHomeAddressZip().getCityName());
         job2Email.setText(match.getJob2().getEmployee().getEmail());
         job2Title.setText(match.getJob2().getJobTitle());
-        job2Seniority.setText(match.getJob2().calculateSeniority() / 12 + " år, " + match.getJob2().calculateSeniority() % 12 + " måneder");
+        job2Seniority.setText(match.getJob2().calculateSeniority() / 12 + " år og " + match.getJob2().calculateSeniority() % 12 + " måneder");
         job2Salary.setText(match.getJob2().getMonthlySalary() + " kr");
     }
 
