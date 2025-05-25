@@ -1,5 +1,6 @@
 .matchWrapper {
     -fx-background-color: lightblue;
+    -fx-cursor: hand;
 }
 
 .employeeName {
