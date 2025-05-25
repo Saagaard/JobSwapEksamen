@@ -29,12 +29,17 @@
             <TextField fx:id="jobTitleField" promptText="(Indtast jobtitel)" GridPane.columnIndex="1" />
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
-                  <TextField fx:id="maxMonthField" prefHeight="26.0" prefWidth="57.0" text="0" />
-                  <Label text=" måneder">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="maxMonthField" layoutY="40.0" prefHeight="26.0" prefWidth="57.0" text="0" />
+                        <Label layoutX="57.0" layoutY="43.0" text=" måneder">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="seniorityError2" layoutY="66.0" prefHeight="18.0" prefWidth="230.0" text="Max anciennitet skal være over minimum" textFill="#ff3333" />
+                     </children>
+                  </AnchorPane>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -59,28 +64,38 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <TextField fx:id="salaryField" prefHeight="26.0" prefWidth="57.0" text="15" />
-                  <Label text=" %">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="salaryField" layoutY="40.0" prefHeight="26.0" prefWidth="57.0" text="15" />
+                        <Label layoutX="57.0" layoutY="43.0" text=" %">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="salaryError" layoutY="74.0" prefHeight="18.0" prefWidth="230.0" text="Lønafvigelse skal være mellem 0-15%" textFill="#ff3333" />
+                     </children>
+                  </AnchorPane>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <TextField fx:id="transportTimeField" prefHeight="26.0" prefWidth="57.0" text="0" />
-                  <Label text=" minutter">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="transportTimeField" layoutY="40.0" prefHeight="26.0" prefWidth="57.0" text="0" />
+                        <Label layoutX="57.0" layoutY="43.0" text=" minutter">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="transportError" layoutY="74.0" prefHeight="18.0" prefWidth="230.0" text="Transporttid skal være mindst 0 minutter" textFill="#ff3333" />
+                     </children>
+                  </AnchorPane>
                </children>
             </HBox>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
                   <TextField fx:id="minimumMonthField" layoutX="-1.0" layoutY="35.0" prefHeight="26.0" prefWidth="59.0" text="0" />
-                  <Label fx:id="anciennitetError" layoutY="65.0" prefHeight="18.0" prefWidth="230.0" text="Anciennitet skal være mindst 6 måneder" textFill="#ff3333" />
+                  <Label fx:id="seniorityError1" layoutY="65.0" prefHeight="18.0" prefWidth="230.0" text="Anciennitet skal være mindst 6 måneder" textFill="#ff3333" />
                   <Label layoutX="56.0" layoutY="38.0" prefHeight="22.0" prefWidth="73.0" text=" måneder">
                      <font>
                         <Font size="15.0" />
@@ -135,7 +150,7 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <Button layoutX="864.0" layoutY="449.0" mnemonicParsing="false" onAction="#generateCriteria" prefHeight="216.0" prefWidth="370.0" text="Søg">
+      <Button layoutX="864.0" layoutY="449.0" mnemonicParsing="false" onAction="#validateFields" prefHeight="216.0" prefWidth="370.0" text="Søg">
          <font>
             <Font size="48.0" />
          </font>

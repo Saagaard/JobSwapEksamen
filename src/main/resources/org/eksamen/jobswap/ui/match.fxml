@@ -16,7 +16,7 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Button layoutX="545.0" layoutY="633.0" mnemonicParsing="false" text="Udskriv matches">
+      <Button layoutX="830.0" layoutY="633.0" mnemonicParsing="false" text="Udskriv matches">
          <font>
             <Font size="25.0" />
          </font>
@@ -40,7 +40,7 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Button fx:id="searchButton" layoutX="138.0" layoutY="633.0" mnemonicParsing="false" onAction="#switchToSearchMenu" prefHeight="52.0" prefWidth="178.0" text="Ny søgning">
+      <Button fx:id="searchButton" layoutX="261.0" layoutY="633.0" mnemonicParsing="false" onAction="#switchToSearchMenu" prefHeight="52.0" prefWidth="178.0" text="Ny søgning">
          <font>
             <Font size="25.0" />
          </font>

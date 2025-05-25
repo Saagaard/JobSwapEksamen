@@ -49,13 +49,18 @@ public class MatchSearch {
                 // Lønafvigelse
                 float salaryDifference1 = (job2.getMonthlySalary() - job1.getMonthlySalary());
                 float salaryDifference2 = (job1.getMonthlySalary() - job2.getMonthlySalary());
-                System.out.println("Lønforskel i kr: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
-                if (calculateSalaryDifference(job1, job2) < criteria.getSalaryDifference()) {
-                    System.out.println("Lønafvigelse matcher");
+                if (criteria.getSalaryDifference() != 0) {
+                    System.out.println("Lønforskel i kr: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
+                    if (calculateSalaryDifference(job1, job2) < criteria.getSalaryDifference()) {
+                        System.out.println("Lønafvigelse matcher");
+                    } else {
+                        System.out.println("Lønafvigelse matcher IKKE");
+                        continue;
+                    }
                 } else {
-                    System.out.println("Lønafvigelse matcher IKKE");
-                    continue;
+                    System.out.println("Ingen lønafvigelse valgt");
                 }
+
 
                 // Minimum og max anciennitet
                 System.out.println("Job1 anciennitet: " + job1.calculateSeniority() + " Job2 anciennitet: " + job2.calculateSeniority());

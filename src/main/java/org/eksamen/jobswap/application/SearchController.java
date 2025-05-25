@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.controlsfx.control.action.Action;
@@ -21,7 +22,88 @@ public class SearchController {
     @FXML
     private TextField jobTitleField, transportTimeField, salaryField, minimumYearField, minimumMonthField, maxYearField, maxMonthField;
 
+    @FXML
+    private Label transportError, salaryError, seniorityError1, seniorityError2;
+
     Criteria criteria;
+
+    public void initialize() {
+        transportError.setText("");
+        salaryError.setText("");
+        seniorityError1.setText("");
+        seniorityError2.setText("");
+
+    }
+
+    public void validateFields(ActionEvent event) throws Exception {
+        boolean validFields = true;
+
+        // Transporttid
+        if (transportTimeField.getText().isEmpty()) {
+            transportTimeField.setText("0");
+        } else {
+            int transportInput = Integer.parseInt(transportTimeField.getText());
+            if (transportInput < 0) {
+                transportError.setText("Transporttid skal være mindst 0 minutter");
+                validFields = false;
+            } else {
+                transportError.setText("");
+            }
+        }
+
+        // Lønafvigelse
+        if (salaryField.getText().isEmpty()) {
+            salaryError.setText("Lønafvigelse skal være udfyldt");
+            validFields = false;
+        } else {
+            int salaryInput = Integer.parseInt(salaryField.getText());
+            if (salaryInput < 0 || salaryInput > 15) {
+                salaryError.setText("Lønafvigelse skal være mellem 0-15%");
+                validFields = false;
+            } else {
+                salaryError.setText("");
+            }
+        }
+
+        // Minimum anciennitet
+        if(minimumYearField.getText().isEmpty()) {
+            minimumYearField.setText("0");
+            seniorityError1.setText("");
+        }
+        if(minimumMonthField.getText().isEmpty()) {
+            minimumMonthField.setText("0");
+            seniorityError1.setText("");
+        }
+        int minimumSeniorityInput = (Integer.parseInt(minimumYearField.getText()) * 12 + Integer.parseInt(minimumMonthField.getText()));
+        if (minimumSeniorityInput < 6) {
+            seniorityError1.setText("Anciennitet skal være mindst 6 måneder");
+            validFields = false;
+        } else {
+            seniorityError1.setText("");
+        }
+
+        // Max anciennitet
+        if(maxYearField.getText().isEmpty()) {
+            maxYearField.setText("0");
+            seniorityError2.setText("");
+        }
+        if(maxMonthField.getText().isEmpty()) {
+            maxMonthField.setText("0");
+            seniorityError2.setText("");
+        }
+        int maxSeniorityInput = (Integer.parseInt(maxYearField.getText()) * 12 + Integer.parseInt(maxMonthField.getText()));
+        if (maxSeniorityInput <= minimumSeniorityInput) {
+            seniorityError2.setText("Max anciennitet skal være over minimum");
+            validFields = false;
+        } else {
+            seniorityError2.setText("");
+        }
+
+        if (validFields) {
+            generateCriteria(event);
+        }
+
+    }
 
     public void generateCriteria(ActionEvent event) throws Exception {
 
