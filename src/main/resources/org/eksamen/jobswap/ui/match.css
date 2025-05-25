@@ -1,3 +1,12 @@
 .matchWrapper {
     -fx-background-color: lightblue;
 }
+
+.employeeName {
+    -fx-font-size: 22px;
+    -fx-alignment: center; /* centers content within the Label */
+}
+
+.employeeDetails {
+    -fx-padding: 10 0 0 10;
+}

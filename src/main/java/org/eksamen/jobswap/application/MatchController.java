@@ -26,12 +26,6 @@ public class MatchController {
     @FXML
     private GridPane matchGrid;
 
-    public void initialize() throws Exception {
-
-    }
-
-
-
     public void setMatches(List<Match> matches) {
         this.matches = matches;
         showMatches();
@@ -53,7 +47,7 @@ public class MatchController {
 
                 matchContainer.setOnMouseClicked(event -> {
                     try {
-                        switchToMatchDetailsMenu(event, match);
+                        switchToMatchDetailsMenu(event, match, matches);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
@@ -80,18 +74,22 @@ public class MatchController {
 
                 matchGrid.add(matchContainer, column, row);
 
-                AnchorPane employee1Name = new AnchorPane();
-                AnchorPane employee2Name = new AnchorPane();
+                StackPane employee1Name = new StackPane();
+                StackPane employee2Name = new StackPane();
                 matchContainer.add(employee1Name, 0, 0);
                 matchContainer.add(employee2Name, 1, 0);
 
                 Label employee1NameLabel = new Label(match.getJob1().getEmployee().getFirstName() + " " + match.getJob1().getEmployee().getLastName());
+                employee1NameLabel.getStyleClass().add("employeeName");
                 employee1Name.getChildren().add(employee1NameLabel);
                 Label employee2NameLabel = new Label(match.getJob2().getEmployee().getFirstName() + " " + match.getJob2().getEmployee().getLastName());
+                employee2NameLabel.getStyleClass().add("employeeName");
                 employee2Name.getChildren().add(employee2NameLabel);
 
                 VBox employee1Details = new VBox();
+                employee1Details.getStyleClass().add("employeeDetails");
                 VBox employee2Details = new VBox();
+                employee2Details.getStyleClass().add("employeeDetails");
                 matchContainer.add(employee1Details, 0, 1);
                 matchContainer.add(employee2Details, 1, 1);
 
@@ -124,13 +122,13 @@ public class MatchController {
         }
     }
 
-    public void switchToMatchDetailsMenu(MouseEvent event, Match match) throws IOException {
+    public void switchToMatchDetailsMenu(MouseEvent event, Match match, List<Match> matches) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/eksamen/jobswap/ui/matchdetails.fxml"));
         Parent root = loader.load();
 
         MatchDetailsController matchDetailsController = loader.getController();
-        matchDetailsController.setMatch(match);
+        matchDetailsController.setMatch(match, matches);
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
