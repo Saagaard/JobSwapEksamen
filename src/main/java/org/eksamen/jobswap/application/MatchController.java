@@ -26,6 +26,9 @@ public class MatchController {
     @FXML
     private GridPane matchGrid;
 
+    @FXML
+    private Button searchButton;
+
     public void setMatches(List<Match> matches) {
         this.matches = matches;
         showMatches();
@@ -129,6 +132,17 @@ public class MatchController {
 
         MatchDetailsController matchDetailsController = loader.getController();
         matchDetailsController.setMatch(match, matches);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("/org/eksamen/jobswap/ui/match.css").toExternalForm());
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToSearchMenu(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/eksamen/jobswap/ui/search.fxml"));
+        Parent root = loader.load();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

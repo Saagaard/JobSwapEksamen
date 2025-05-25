@@ -40,5 +40,10 @@
             </AnchorPane>
         </content>
       </ScrollPane>
+      <Button fx:id="searchButton" layoutX="138.0" layoutY="633.0" mnemonicParsing="false" onAction="#switchToSearchMenu" prefHeight="52.0" prefWidth="178.0" text="Ny søgning">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
