@@ -37,6 +37,11 @@ public class MatchDetailsController {
     public void showMatch() {
         job1Name.setText(match.getJob1().getEmployee().getFirstName() + " " + match.getJob1().getEmployee().getLastName());
         job1SalaryDifference.setText(match.getJob1SalaryDifference() + " kr");
+        if (match.getJob1SalaryDifference() >= 0 ) {
+            job1SalaryDifference.getStyleClass().add("green");
+        } else {
+            job1SalaryDifference.getStyleClass().add("red");
+        }
         job1Workplace.setText(match.getJob1().getWorkplace().getWorkAddress() + ", " + match.getJob1().getWorkplace().getWorkAddressZip().getZipCode() + " " + match.getJob1().getWorkplace().getWorkAddressZip().getCityName());
         job1TransportTime.setText(match.getJob1NewTransportDetails().getTravelTime() + " minutter");
         job1TimeSaved.setText(abs((match.getJob1OldTransportDetails().getTravelTime() - match.getJob1NewTransportDetails().getTravelTime()) * 2) + " minutter");
@@ -49,6 +54,11 @@ public class MatchDetailsController {
 
         job2Name.setText(match.getJob2().getEmployee().getFirstName() + " " + match.getJob2().getEmployee().getLastName());
         job2SalaryDifference.setText(match.getJob2SalaryDifference() + " kr");
+        if (match.getJob2SalaryDifference() >= 0 ) {
+            job2SalaryDifference.getStyleClass().add("green");
+        } else {
+            job2SalaryDifference.getStyleClass().add("red");
+        }
         job2Workplace.setText(match.getJob2().getWorkplace().getWorkAddress() + ", " + match.getJob2().getWorkplace().getWorkAddressZip().getZipCode() + " " + match.getJob2().getWorkplace().getWorkAddressZip().getCityName());
         job2TransportTime.setText(match.getJob2NewTransportDetails().getTravelTime() + " minutter");
         job2TimeSaved.setText(abs((match.getJob2OldTransportDetails().getTravelTime() - match.getJob2NewTransportDetails().getTravelTime()) * 2) + " minutter");

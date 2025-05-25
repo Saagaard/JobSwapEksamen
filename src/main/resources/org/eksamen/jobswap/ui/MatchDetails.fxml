@@ -273,7 +273,7 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="titleName">
                <children>
                   <Label fx:id="job1Name" alignment="TOP_CENTER" layoutX="191.0" layoutY="1.0" prefWidth="257.0" text="Bo J.">
                      <font>
@@ -282,7 +282,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="titleName" GridPane.columnIndex="1">
                <children>
                   <Label fx:id="job2Name" alignment="TOP_CENTER" layoutX="192.0" layoutY="2.0" prefWidth="257.0" text="Jens H.">
                      <font>

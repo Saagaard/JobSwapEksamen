@@ -1,3 +1,15 @@
+.titleName {
+    -fx-background-color: #4abef1;
+}
+
 .title {
     -fx-background-color: lightblue;
+}
+
+.green {
+    -fx-text-fill: green;
+}
+
+.red {
+    -fx-text-fill: red;
 }
