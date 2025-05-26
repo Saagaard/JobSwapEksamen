@@ -12,7 +12,7 @@ public class JobSwapApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(JobSwapApplication.class.getResource("/org/eksamen/jobswap/ui/search.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("JobSwap");
         stage.setScene(scene);
         stage.show();
     }
