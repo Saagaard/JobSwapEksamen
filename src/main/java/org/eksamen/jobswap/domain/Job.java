@@ -11,7 +11,6 @@ public class Job {
     private final LocalDate employmentDate;
     private final float monthlySalary;
 
-
     public Job(int jobID, Employee employee, Workplace workplace, String jobTitle, LocalDate employmentDate, float monthlySalary) {
         this.jobID = jobID;
         this.employee = employee;

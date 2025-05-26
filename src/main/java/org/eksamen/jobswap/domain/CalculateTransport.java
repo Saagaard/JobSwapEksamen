@@ -6,7 +6,6 @@ import java.net.http.HttpResponse;
 import com.google.gson.*;
 import org.eksamen.jobswap.foundation.CredentialsManager;
 
-
 public class CalculateTransport {
 
     private static final String API_KEY = CredentialsManager.getMapsApiKey();
