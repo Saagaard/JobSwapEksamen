@@ -19,6 +19,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     public Employee read(int employeeID) throws Exception {
         String sql = "EXECUTE read_EmployeeID @employeeID = ?";
+        ZipDAOImpl zipDAO = new ZipDAOImpl();
 
         //try-with-resources lukker automatisk ResultSet
         try (
@@ -34,7 +35,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                     String lastName = rs.getString("fldLastName");
                     String email = rs.getString("fldEmail");
                     String homeAddress = rs.getString("fldHomeAddress");
-                    Zip homeAddressZip = new Zip(rs.getInt("fldHomeAddressZip"));
+                    Zip homeAddressZip = zipDAO.read(rs.getInt("fldHomeAddressZip"));
 
                     return (new Employee(newEmployeeID, firstName, lastName, email, homeAddress, homeAddressZip));
                 }
@@ -46,6 +47,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         public List<Employee> readAll() throws Exception {
         List<Employee> employees = new ArrayList<>();
         String sql = "EXECUTE readAll_Employee";
+        ZipDAOImpl zipDAO = new ZipDAOImpl();
 
         //try-with-resources lukker automatisk ResultSet
         try (
@@ -59,7 +61,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 String lastName = rs.getString("fldLastName");
                 String email = rs.getString("fldEmail");
                 String homeAddress = rs.getString("fldHomeAddress");
-                Zip homeAddressZip = new Zip(rs.getInt("fldHomeAddressZip"));
+                Zip homeAddressZip = zipDAO.read(rs.getInt("fldHomeAddressZip"));
 
                 employees.add(new Employee(employeeID, firstName, lastName, email, homeAddress, homeAddressZip));
             }

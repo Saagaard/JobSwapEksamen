@@ -10,24 +10,9 @@ public class Zip {
     int zipCode;
     String cityName;
 
-    public Zip(int zipCode) throws Exception {
+    public Zip(int zipCode, String cityName) {
         this.zipCode = zipCode;
-
-        String sql = "EXECUTE read_CityName_Zip @zipCode = ?";
-
-        try (
-                Connection conn = SqlConnection.getConnection();
-                PreparedStatement pstmt = conn.prepareStatement(sql)
-        ) {
-            pstmt.setInt(1, this.zipCode);
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    this.cityName = rs.getString("fldCityName");
-                } else {
-                    throw new Exception("Zip code not found");
-                }
-            }
-        }
+        this.cityName = cityName;
     }
 
     public int getZipCode() {
