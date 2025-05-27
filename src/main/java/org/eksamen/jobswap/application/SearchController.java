@@ -15,7 +15,7 @@ import org.eksamen.jobswap.domain.MatchSearch;
 
 import java.util.List;
 
-import static org.eksamen.jobswap.utils.StringUtils.isDigits;
+import static org.eksamen.jobswap.businessServices.IsDigits.isDigits;
 
 public class SearchController {
     @FXML

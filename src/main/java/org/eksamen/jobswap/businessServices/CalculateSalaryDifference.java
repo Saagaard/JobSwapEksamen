@@ -1,4 +1,6 @@
-package org.eksamen.jobswap.domain;
+package org.eksamen.jobswap.businessServices;
+
+import org.eksamen.jobswap.domain.Job;
 
 import static java.lang.Math.abs;
 

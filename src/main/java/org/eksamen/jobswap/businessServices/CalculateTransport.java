@@ -1,9 +1,10 @@
-package org.eksamen.jobswap.domain;
+package org.eksamen.jobswap.businessServices;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import com.google.gson.*;
+import org.eksamen.jobswap.domain.TransportDetails;
 import org.eksamen.jobswap.foundation.CredentialsManager;
 
 public class CalculateTransport {

@@ -1,6 +1,6 @@
-package org.eksamen.jobswap.utils;
+package org.eksamen.jobswap.businessServices;
 
-public class StringUtils {
+public class IsDigits {
 
     public static boolean isDigits(String s) {
 

@@ -1,11 +1,12 @@
 package org.eksamen.jobswap.domain;
+import org.eksamen.jobswap.businessServices.CalculateTransport;
 import org.eksamen.jobswap.persistence.JobDAOImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.abs;
-import static org.eksamen.jobswap.domain.CalculateSalaryDifference.calculateSalaryDifference;
+import static org.eksamen.jobswap.businessServices.CalculateSalaryDifference.calculateSalaryDifference;
 
 public class MatchSearch {
 
