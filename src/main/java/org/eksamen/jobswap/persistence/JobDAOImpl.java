@@ -11,6 +11,14 @@ import java.util.List;
 
 public class JobDAOImpl implements JobDAO {
 
+    public boolean add(Job job) {
+        return false;
+    }
+
+    public Job read(int jobID) {
+        return null;
+    }
+
     public List<Job> readAll() throws Exception {
         List<Job> jobs = new ArrayList<>();
         String sql = "EXECUTE readAll_Job";
@@ -42,4 +50,11 @@ public class JobDAOImpl implements JobDAO {
         }
     }
 
+    public void update(Job job) {
+
+    }
+
+    public boolean delete(int jobID) {
+        return false;
+    }
 }

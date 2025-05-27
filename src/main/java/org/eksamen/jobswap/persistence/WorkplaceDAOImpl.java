@@ -1,5 +1,6 @@
 package org.eksamen.jobswap.persistence;
 
+import org.eksamen.jobswap.domain.Employee;
 import org.eksamen.jobswap.domain.Workplace;
 import org.eksamen.jobswap.domain.Zip;
 import org.eksamen.jobswap.foundation.SqlConnection;
@@ -11,6 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WorkplaceDAOImpl implements WorkplaceDAO {
+
+    public boolean add(Workplace workplace) {
+        return false;
+    }
 
     public Workplace read(int workplaceID) throws Exception {
         String sql = "EXECUTE read_WorkplaceID @workplaceID = ?";
@@ -62,4 +67,11 @@ public class WorkplaceDAOImpl implements WorkplaceDAO {
         }
     }
 
+    public void update(Workplace workplace) {
+
+    }
+
+    public boolean delete(int workplaceID) {
+        return false;
+    }
 }
