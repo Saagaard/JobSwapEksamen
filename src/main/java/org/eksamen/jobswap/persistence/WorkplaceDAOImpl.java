@@ -19,7 +19,6 @@ public class WorkplaceDAOImpl implements WorkplaceDAO {
 
     public Workplace read(int workplaceID) throws Exception {
         String sql = "EXECUTE read_WorkplaceID @workplaceID = ?";
-        ZipDAOImpl zipDAO = new ZipDAOImpl();
 
         //try-with-resources lukker automatisk ResultSet
         try (
@@ -32,7 +31,7 @@ public class WorkplaceDAOImpl implements WorkplaceDAO {
                 while (rs.next()) {
                     int newWorkplaceID = rs.getInt("fldWorkPlaceID");
                     String workAddress = rs.getString("fldWorkAddress");
-                    Zip workAddressZip = zipDAO.read(rs.getInt("fldWorkAddressZip"));
+                    Zip workAddressZip = new Zip(rs.getInt("fldWorkAddressZip"));
 
                     return (new Workplace(newWorkplaceID, workAddress, workAddressZip));
                 }
@@ -44,7 +43,6 @@ public class WorkplaceDAOImpl implements WorkplaceDAO {
     public List<Workplace> readAll() throws Exception {
         List<Workplace> workplaces = new ArrayList<>();
         String sql = "EXECUTE readAll_Workplace";
-        ZipDAOImpl zipDAO = new ZipDAOImpl();
 
         //try-with-resources lukker automatisk ResultSet
         try (
@@ -55,7 +53,7 @@ public class WorkplaceDAOImpl implements WorkplaceDAO {
             while (rs.next()) {
                 int workplaceID = rs.getInt("fldWorkPlaceID");
                 String workAddress = rs.getString("fldWorkAddress");
-                Zip workAddressZip = zipDAO.read(rs.getInt("fldWorkAddressZip"));
+                Zip workAddressZip = new Zip(rs.getInt("fldWorkAddressZip"));
                 workplaces.add(new Workplace(workplaceID, workAddress, workAddressZip));
             }
 
