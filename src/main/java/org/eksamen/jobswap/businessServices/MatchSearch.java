@@ -1,5 +1,9 @@
-package org.eksamen.jobswap.domain;
-import org.eksamen.jobswap.businessServices.CalculateTransport;
+package org.eksamen.jobswap.businessServices;
+import org.eksamen.jobswap.domain.Criteria;
+import org.eksamen.jobswap.domain.Job;
+import org.eksamen.jobswap.domain.Match;
+import org.eksamen.jobswap.domain.TransportDetails;
+import org.eksamen.jobswap.persistence.JobDAO;
 import org.eksamen.jobswap.persistence.JobDAOImpl;
 
 import java.util.ArrayList;
@@ -10,11 +14,16 @@ import static org.eksamen.jobswap.businessServices.CalculateSalaryDifference.cal
 
 public class MatchSearch {
 
-    public List<Match> createMatches(Criteria criteria) throws Exception {
-        JobDAOImpl jobDAO = new JobDAOImpl();
-        List<Job> jobList = jobDAO.readAll();
+    private final JobDAO jobDAO; // Interface
+    private final CalculateTransport calculateTransport; // Interface
 
-        CalculateTransport calculateTransport = new CalculateTransport();
+    public MatchSearch(JobDAO jobDAO, CalculateTransport calculateTransport) { // Her bliver instantiations smidt ind som parametre, så vi kun er afhængige af interfaces i denne klasse
+        this.jobDAO = jobDAO;
+        this.calculateTransport = calculateTransport;
+    }
+
+    public List<Match> createMatches(Criteria criteria) throws Exception {
+        List<Job> jobList = jobDAO.readAll();
 
         //samle al data i en ny liste "matches" så vi kan regne med API metoden og videresende al data til match cards.
         List<Match> matchList = new ArrayList<>();

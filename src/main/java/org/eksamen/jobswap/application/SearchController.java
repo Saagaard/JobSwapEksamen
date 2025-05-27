@@ -9,9 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.eksamen.jobswap.businessServices.CalculateTransport;
+import org.eksamen.jobswap.businessServices.CalculateTransportImpl;
 import org.eksamen.jobswap.domain.Criteria;
 import org.eksamen.jobswap.domain.Match;
-import org.eksamen.jobswap.domain.MatchSearch;
+import org.eksamen.jobswap.businessServices.MatchSearch;
+import org.eksamen.jobswap.persistence.JobDAO;
+import org.eksamen.jobswap.persistence.JobDAOImpl;
 
 import java.util.List;
 
@@ -148,7 +152,9 @@ public class SearchController {
         System.out.println("Max anciennitet: " + criteria.getMaxSeniority());
         System.out.println("Lønafvigelse: " + criteria.getSalaryDifference());
         System.out.println("Ny transporttid: " + criteria.getTransportTime());
-        MatchSearch matchSearch = new MatchSearch();
+        JobDAO jobDAO = new JobDAOImpl();
+        CalculateTransport calculateTransport = new CalculateTransportImpl();
+        MatchSearch matchSearch = new MatchSearch(jobDAO, calculateTransport);
         List <Match> matchList = matchSearch.createMatches(criteria);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/eksamen/jobswap/ui/match.fxml"));
