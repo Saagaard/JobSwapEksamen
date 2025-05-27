@@ -9,10 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.controlsfx.control.action.Action;
 import org.eksamen.jobswap.domain.Criteria;
 import org.eksamen.jobswap.domain.Match;
 import org.eksamen.jobswap.domain.MatchSearch;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.eksamen.jobswap.utils.StringUtils.isDigits;

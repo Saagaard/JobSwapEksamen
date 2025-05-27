@@ -1,5 +1,7 @@
 package org.eksamen.jobswap.domain;
+import org.eksamen.jobswap.persistence.EmployeeDAOImpl;
 import org.eksamen.jobswap.persistence.JobDAOImpl;
+import org.eksamen.jobswap.persistence.WorkplaceDAOImpl;
 
 import java.util.ArrayList;
 import java.util.List;
