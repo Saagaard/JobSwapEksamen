@@ -18,8 +18,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.eksamen.jobswap.utils.StringUtils.isDigits;
-
 public class SearchController {
     @FXML
     private TextField jobTitleField, transportTimeField, salaryField, minimumYearField, minimumMonthField, maxYearField, maxMonthField;
@@ -167,5 +165,11 @@ public class SearchController {
         stage.show();
     }
 
+    public static boolean isDigits(String s) {
+
+        // Regex to check if the string
+        // contains only digits
+        return s.matches("[0-9]+");
+    }
 
 }
