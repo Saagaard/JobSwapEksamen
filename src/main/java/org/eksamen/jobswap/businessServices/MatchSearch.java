@@ -27,7 +27,7 @@ public class MatchSearch {
 
         //samle al data i en ny liste "matches" så vi kan regne med API metoden og videresende al data til match cards.
         List<Match> matchList = new ArrayList<>();
-
+        long startTime = System.nanoTime();
         for (int job1Index = 0; job1Index < jobList.size(); job1Index++) {
             Job job1 = jobList.get(job1Index);
 
@@ -38,7 +38,7 @@ public class MatchSearch {
                     continue;
                 }
 
-                System.out.println(job1.getEmployee().getFirstName() + " og " + job2.getEmployee().getFirstName());
+                //System.out.println(job1.getEmployee().getFirstName() + " og " + job2.getEmployee().getFirstName());
 
                 // Jobtitel
                 if (!criteria.getJobTitle().isEmpty()) {
@@ -130,12 +130,10 @@ public class MatchSearch {
             }
 
         }
-        //System.out.println("Matches:");
-        for (Match match : matchList) {
-            //System.out.println(match.getJob1().getEmployee().getFirstName() + " " + match.getJob1().getEmployee().getLastName());
-            //System.out.println(match.getJob2().getEmployee().getFirstName() + " " + match.getJob2().getEmployee().getLastName());
-            //System.out.println("-----------------");
-        }
+
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime) / 1000000;  //divide by 1000000 to get milliseconds.
+        System.out.print(duration + " ms");
         return matchList;
     }
 
