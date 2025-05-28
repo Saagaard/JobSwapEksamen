@@ -11,6 +11,9 @@ public class CredentialsManager {
 
     private static final Properties props = new Properties();
 
+    /**
+     * Bruger java.utils.properties til at læse filen
+     */
     static {
         try (InputStream input = CredentialsManager.class.getClassLoader().getResourceAsStream("credentials.properties")) {
             if (input == null) {
