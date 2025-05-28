@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Starts the application
+ */
 public class JobSwapApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {

@@ -21,6 +21,12 @@ import java.util.List;
 
 import static org.eksamen.jobswap.businessServices.IsDigits.isDigits;
 
+
+/**
+ * Is responsible for the fields on the search window and their input validation
+ * Also handles the criterias inputted and adds them to the search
+ * Then it is responsible for the whole search itself, calling the objects and calculation methods
+ */
 public class SearchController {
     @FXML
     private TextField jobTitleField, transportTimeField, salaryField, minimumYearField, minimumMonthField, maxYearField, maxMonthField;
@@ -30,6 +36,7 @@ public class SearchController {
 
     Criteria criteria;
 
+    // Makes sure the input fields are empty
     public void initialize() {
         transportError.setText("");
         salaryError.setText("");
@@ -38,6 +45,12 @@ public class SearchController {
 
     }
 
+    /**
+     * Handles validating the data inputted into the fields
+     * And explaining if anything doesn't follow the expected input
+     * @param event
+     * @throws Exception
+     */
     public void validateFields(ActionEvent event) throws Exception {
         boolean validFields = true;
 
@@ -127,6 +140,11 @@ public class SearchController {
 
     }
 
+    /**
+     * Generates the criteria object with the inputted criteria in the data fields
+     * @param event
+     * @throws Exception
+     */
     public void generateCriteria(ActionEvent event) throws Exception {
 
         String jobTitle =  jobTitleField.getText();
@@ -146,6 +164,15 @@ public class SearchController {
 
     }
 
+
+    /**
+     * Prints the input criteria
+     * Starts by calculating transport as it is the most likely criteria to disqualify matches to save on performance as the loop continues if a criteria is not met
+     * Then it proceeds with the rest of the criteria and the search algorithm
+     * @param criteria
+     * @param event
+     * @throws Exception
+     */
     public void searchMatches(Criteria criteria, ActionEvent event) throws Exception {
         System.out.println("Jobtitel: " + criteria.getJobTitle());
         System.out.println("Minimum anciennitet: " + criteria.getMinimumSeniority());

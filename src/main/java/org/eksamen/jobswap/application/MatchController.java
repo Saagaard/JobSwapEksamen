@@ -18,6 +18,11 @@ import java.util.List;
 
 import static java.lang.Math.abs;
 
+/**
+ * Class is responsible for showing matches in card-format
+ * Class is also responsible for:
+ * swapping between the search window, match window and the match details window
+ */
 public class MatchController {
     List<Match> matches;
 
@@ -27,11 +32,20 @@ public class MatchController {
     @FXML
     private Button searchButton;
 
+    /**
+     * Sets the reference for the match list which contains all the matches found
+     * Calls the showMatches(); method to display the matches
+     * @param matches
+     */
     public void setMatches(List<Match> matches) {
         this.matches = matches;
         showMatches();
     }
 
+    /**
+     * Uses JavaFX to create the layout for the cards
+     * Formats the matches from the list into the cards with their data
+     */
     public void showMatches() {
         if (matches != null) {
 
@@ -125,6 +139,13 @@ public class MatchController {
         }
     }
 
+    /**
+     * Switches to the detailsMenu when clicking on a match to see more details
+     * @param event
+     * @param match
+     * @param matches
+     * @throws IOException
+     */
     public void switchToMatchDetailsMenu(MouseEvent event, Match match, List<Match> matches) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/eksamen/jobswap/ui/matchdetails.fxml"));
@@ -140,6 +161,11 @@ public class MatchController {
         stage.show();
     }
 
+    /**
+     * Switches to the search menu when clicking the new search button
+     * @param event
+     * @throws IOException
+     */
     public void switchToSearchMenu(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/eksamen/jobswap/ui/search.fxml"));
         Parent root = loader.load();

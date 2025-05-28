@@ -2,6 +2,9 @@ package org.eksamen.jobswap.foundation;
 
 import java.sql.*;
 
+/**
+ * Is responsible for setting up the SQL connection to the database using JDBC
+ */
 public class SqlConnection {
     private static final String URL = CredentialsManager.getDbUrl();
     private static final String USER = CredentialsManager.getDbUser();

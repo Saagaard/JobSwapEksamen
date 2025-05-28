@@ -3,6 +3,10 @@ package org.eksamen.jobswap.foundation;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * Is responsible for handling the local-stored credentials.properties file
+ * The file contains the API key and database password and similar secrets
+ */
 public class CredentialsManager {
 
     private static final Properties props = new Properties();
