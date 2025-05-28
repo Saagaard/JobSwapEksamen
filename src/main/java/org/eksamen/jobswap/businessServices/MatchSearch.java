@@ -12,6 +12,9 @@ import java.util.List;
 import static java.lang.Math.abs;
 import static org.eksamen.jobswap.businessServices.CalculateSalaryDifference.calculateSalaryDifference;
 
+/**
+ * Service class responsible for finding potential jobswap matches.
+ */
 public class MatchSearch {
 
     private final JobDAO jobDAO; // Interface
@@ -22,6 +25,12 @@ public class MatchSearch {
         this.calculateTransport = calculateTransport;
     }
 
+    /**
+     *
+     * @param criteria A Criteria-object created by SearchController
+     * @return A {@link List} of {@link Match} objects tht match the given {@link Criteria} object
+     * @throws Exception If an error occurs during data retrieval
+     */
     public List<Match> createMatches(Criteria criteria) throws Exception {
         List<Job> jobList = jobDAO.readAll();
 
