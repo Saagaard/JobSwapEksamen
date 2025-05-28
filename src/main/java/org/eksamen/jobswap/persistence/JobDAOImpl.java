@@ -14,6 +14,38 @@ import java.util.List;
  */
 public class JobDAOImpl implements JobDAO {
 
+    public boolean add(Job job) {
+        return false;
+    }
+
+    public Job read(int jobID) throws Exception {
+        String sql = "EXECUTE read_JobID @jobID = ?";
+        EmployeeDAOImpl employeeDAO = new EmployeeDAOImpl();
+        WorkplaceDAOImpl workplaceDAO = new WorkplaceDAOImpl();
+
+        //try-with-resources lukker automatisk ResultSet
+        try (
+                Connection conn = SqlConnection.getConnection();
+                PreparedStatement pstmt = conn.prepareStatement(sql);
+
+        ) {
+            pstmt.setInt(1, jobID);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    int newJobID = rs.getInt("fldJobID");
+                    int employeeID = rs.getInt("fldEmployeeID");
+                    int workplaceID = rs.getInt("fldWorkPlaceID");
+                    String jobTitle = rs.getString("fldJobTitle");
+                    LocalDate employmentDate = rs.getDate("fldEmploymentDate").toLocalDate();
+                    float monthlySalary = rs.getFloat("fldMonthlySalary");
+
+                    return (new Job(newJobID, employeeDAO.read(employeeID), workplaceDAO.read(workplaceID), jobTitle, employmentDate, monthlySalary));
+                }
+            }
+            return null;
+        }
+    }
+
     public List<Job> readAll() throws Exception {
         List<Job> jobs = new ArrayList<>();
         String sql = "EXECUTE readAll_Job";
@@ -45,4 +77,11 @@ public class JobDAOImpl implements JobDAO {
         }
     }
 
+    public void update(Job job) {
+
+    }
+
+    public boolean delete(int jobID) {
+        return false;
+    }
 }
