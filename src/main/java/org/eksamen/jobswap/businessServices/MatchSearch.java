@@ -27,16 +27,13 @@ public class MatchSearch {
 
         //samle al data i en ny liste "matches" så vi kan regne med API metoden og videresende al data til match cards.
         List<Match> matchList = new ArrayList<>();
-        // Liste over jobs der allerede er tjekket
-        List<Integer> checkedJobIndexes = new ArrayList<>();
 
         for (int job1Index = 0; job1Index < jobList.size(); job1Index++) {
             Job job1 = jobList.get(job1Index);
 
-            for (int i = 0; i < jobList.size(); i++) {
-                if (i == job1Index || checkedJobIndexes.contains(i)) { continue; }
+            for (int job2Index = job1Index + 1; job2Index < jobList.size(); job2Index++) {
 
-                Job job2 = jobList.get(i);
+                Job job2 = jobList.get(job2Index);
                 if (job1.getWorkplace().getWorkplaceID() == job2.getWorkplace().getWorkplaceID()){
                     continue;
                 }
@@ -46,40 +43,40 @@ public class MatchSearch {
                 // Jobtitel
                 if (!criteria.getJobTitle().isEmpty()) {
                     if (!criteria.getJobTitle().equals(job1.getJobTitle()) || !criteria.getJobTitle().equals(job2.getJobTitle())) {
-                        System.out.println("Jobtitel matcher IKKE");
+                        //System.out.println("Jobtitel matcher IKKE");
                         continue;
                     } else {
-                        System.out.println("jobtitel matcher");
+                        //System.out.println("jobtitel matcher");
                     }
                 } else {
-                    System.out.println("Ingen jobtitel valgt");
+                    //System.out.println("Ingen jobtitel valgt");
                 }
 
                 // Lønafvigelse
                 float salaryDifference1 = (job2.getMonthlySalary() - job1.getMonthlySalary());
                 float salaryDifference2 = (job1.getMonthlySalary() - job2.getMonthlySalary());
                 if (criteria.getSalaryDifference() != 0) {
-                    System.out.println("Lønforskel i kr: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
+                    //System.out.println("Lønforskel i kr: " +  abs(job1.getMonthlySalary() - job2.getMonthlySalary()));
                     if (calculateSalaryDifference(job1, job2) < criteria.getSalaryDifference()) {
-                        System.out.println("Lønafvigelse matcher");
+                        //System.out.println("Lønafvigelse matcher");
                     } else {
-                        System.out.println("Lønafvigelse matcher IKKE");
+                        //System.out.println("Lønafvigelse matcher IKKE");
                         continue;
                     }
                 } else {
-                    System.out.println("Ingen lønafvigelse valgt");
+                    //System.out.println("Ingen lønafvigelse valgt");
                 }
 
 
                 // Minimum og max anciennitet
-                System.out.println("Job1 anciennitet: " + job1.calculateSeniority() + " Job2 anciennitet: " + job2.calculateSeniority());
+                //System.out.println("Job1 anciennitet: " + job1.calculateSeniority() + " Job2 anciennitet: " + job2.calculateSeniority());
 
                 if (job1.calculateSeniority() >= criteria.getMinimumSeniority() && job2.calculateSeniority() >= criteria.getMinimumSeniority()
                         && job1.calculateSeniority() <= criteria.getMaxSeniority() && job2.calculateSeniority() <= criteria.getMaxSeniority()){
 
-                    System.out.println("Minimum og max anciennitet matcher");
+                    //System.out.println("Minimum og max anciennitet matcher");
                 } else {
-                    System.out.println("Minimum og max anciennitet matcher IKKE");
+                    //System.out.println("Minimum og max anciennitet matcher IKKE");
                     continue;
                 }
 
@@ -117,27 +114,27 @@ public class MatchSearch {
 
 
                 // Transporttid check
-                System.out.println("Transporttid 1: " + newTransportDetails1.getTravelTime());
-                System.out.println("Transporttid 2: " + newTransportDetails2.getTravelTime());
+                //System.out.println("Transporttid 1: " + newTransportDetails1.getTravelTime());
+                //System.out.println("Transporttid 2: " + newTransportDetails2.getTravelTime());
                 if (newTransportDetails1.getTravelTime() <= criteria.getTransportTime() && newTransportDetails2.getTravelTime() <= criteria.getTransportTime())
                 {
-                    System.out.println("Transporttid matcher");
+                    //System.out.println("Transporttid matcher");
                 } else {
-                    System.out.println("Transporttid matcher IKKE");
+                    //System.out.println("Transporttid matcher IKKE");
                     continue;
                 }
 
-                System.out.println("Match fundet!!!!!!");
+                //System.out.println("Match fundet!!!!!!");
                 matchList.add(new Match (job1, oldTransportDetails1, newTransportDetails1, salaryDifference1, job2, oldTransportDetails2, newTransportDetails2, salaryDifference2));
 
             }
-            checkedJobIndexes.add(job1Index);
+
         }
-        System.out.println("Matches:");
+        //System.out.println("Matches:");
         for (Match match : matchList) {
-            System.out.println(match.getJob1().getEmployee().getFirstName() + " " + match.getJob1().getEmployee().getLastName());
-            System.out.println(match.getJob2().getEmployee().getFirstName() + " " + match.getJob2().getEmployee().getLastName());
-            System.out.println("-----------------");
+            //System.out.println(match.getJob1().getEmployee().getFirstName() + " " + match.getJob1().getEmployee().getLastName());
+            //System.out.println(match.getJob2().getEmployee().getFirstName() + " " + match.getJob2().getEmployee().getLastName());
+            //System.out.println("-----------------");
         }
         return matchList;
     }
