@@ -9,6 +9,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implements CRUD using the corresponding DAO-interface
+ */
 public class JobDAOImpl implements JobDAO {
 
     public List<Job> readAll() throws Exception {

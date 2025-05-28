@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Implements CRUD using the corresponding DAO-interface
+ */
 public class WorkplaceDAOImpl implements WorkplaceDAO {
 
     public Workplace read(int workplaceID) throws Exception {

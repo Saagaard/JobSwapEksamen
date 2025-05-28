@@ -8,6 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Implements CRUD using the corresponding DAO-interface
+ */
 public class ZipDAOImpl implements ZipDAO {
 
     public Zip read(int zipCode) throws SQLException {
