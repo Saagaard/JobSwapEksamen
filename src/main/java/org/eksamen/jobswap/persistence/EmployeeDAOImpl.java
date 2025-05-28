@@ -8,6 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * Implements CRUD using the corresponding DAO-interface
+ */
 public class EmployeeDAOImpl implements EmployeeDAO {
 
     public Employee read(int employeeID) throws Exception {

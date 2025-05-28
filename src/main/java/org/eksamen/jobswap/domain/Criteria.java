@@ -1,5 +1,8 @@
 package org.eksamen.jobswap.domain;
 
+/**
+ * Represents the criteria for a job swap used in SearchController
+ */
 public class Criteria {
     private final String jobTitle;
     private final int transportTime;
