@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.eksamen.jobswap.businessServices.CalculateSeniority;
 import org.eksamen.jobswap.domain.Match;
 
 import java.io.IOException;
@@ -60,7 +61,7 @@ public class MatchDetailsController {
         job1Address.setText(match.getJob1().getEmployee().getHomeAddress());
         job1Email.setText(match.getJob1().getEmployee().getEmail());
         job1Title.setText(match.getJob1().getJobTitle());
-        job1Seniority.setText(match.getJob1().calculateSeniority() / 12 + " år, " + match.getJob1().calculateSeniority() % 12 + " måneder");
+        job1Seniority.setText(CalculateSeniority.calculateSeniority(match.getJob1()) / 12 + " år, " + CalculateSeniority.calculateSeniority(match.getJob1()) % 12 + " måneder");
         job1Salary.setText(match.getJob1().getMonthlySalary() + " kr");
 
         job2Name.setText(match.getJob2().getEmployee().getFirstName() + " " + match.getJob2().getEmployee().getLastName());
@@ -77,7 +78,7 @@ public class MatchDetailsController {
         job2Address.setText(match.getJob2().getEmployee().getHomeAddress());
         job2Email.setText(match.getJob2().getEmployee().getEmail());
         job2Title.setText(match.getJob2().getJobTitle());
-        job2Seniority.setText(match.getJob2().calculateSeniority() / 12 + " år, " + match.getJob2().calculateSeniority() % 12 + " måneder");
+        job2Seniority.setText(CalculateSeniority.calculateSeniority(match.getJob2()) / 12 + " år, " + CalculateSeniority.calculateSeniority(match.getJob2()) % 12 + " måneder");
         job2Salary.setText(match.getJob2().getMonthlySalary() + " kr");
     }
 

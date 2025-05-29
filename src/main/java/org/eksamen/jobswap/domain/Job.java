@@ -20,11 +20,6 @@ public class Job {
         this.monthlySalary = monthlySalary;
     }
 
-    public int calculateSeniority() {
-        LocalDate now = LocalDate.now();
-        return Math.toIntExact(ChronoUnit.MONTHS.between(this.getEmploymentDate(), now));
-    }
-
     public int getJobID() {
         return jobID;
     }

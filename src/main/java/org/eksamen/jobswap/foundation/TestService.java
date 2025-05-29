@@ -1,4 +1,5 @@
 package org.eksamen.jobswap.foundation;
+import org.eksamen.jobswap.businessServices.CalculateSeniority;
 import org.eksamen.jobswap.domain.Job;
 import org.eksamen.jobswap.persistence.JobDAOImpl;
 
@@ -12,7 +13,7 @@ public class TestService {
 
     // Rule 3: Minimum 6 måneders anciennitet
     public boolean hasRequiredAnciennitet(Job job)
-    {return job.calculateSeniority() >= 6;
+    {return CalculateSeniority.calculateSeniority(job) >= 6;
     }
 
     // Samlet validering

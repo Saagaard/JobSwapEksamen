@@ -49,7 +49,7 @@ public class MatchSearch {
             }
 
             // Seniority check - Job1
-            if (job1.calculateSeniority() < criteria.getMinimumSeniority() || job1.calculateSeniority() > criteria.getMaxSeniority()) {
+            if (CalculateSeniority.calculateSeniority(job1) < criteria.getMinimumSeniority() || CalculateSeniority.calculateSeniority(job1) > criteria.getMaxSeniority()) {
                 continue;
             }
 
@@ -71,7 +71,7 @@ public class MatchSearch {
                 }
 
                 // Seniority check - Job2
-                if (job2.calculateSeniority() < criteria.getMinimumSeniority() || job2.calculateSeniority() > criteria.getMaxSeniority()) {
+                if (CalculateSeniority.calculateSeniority(job2) < criteria.getMinimumSeniority() || CalculateSeniority.calculateSeniority(job2) > criteria.getMaxSeniority()) {
                     continue;
                 }
 
