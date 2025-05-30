@@ -1,8 +1,8 @@
 package org.eksamen.jobswap.domain;
 
 public class Zip {
-    int zipCode;
-    String cityName;
+    private final int zipCode;
+    private final String cityName;
 
     public Zip(int zipCode, String cityName) {
         this.zipCode = zipCode;
