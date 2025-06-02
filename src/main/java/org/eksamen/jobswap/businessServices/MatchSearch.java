@@ -49,7 +49,8 @@ public class MatchSearch {
             }
 
             // Seniority check - Job1
-            if (CalculateSeniority.calculateSeniority(job1) < criteria.getMinimumSeniority() || CalculateSeniority.calculateSeniority(job1) > criteria.getMaxSeniority()) {
+            if (CalculateSeniority.calculateSeniority(job1) < criteria.getMinimumSeniority() ||
+                    CalculateSeniority.calculateSeniority(job1) > criteria.getMaxSeniority()) {
                 continue;
             }
 
@@ -71,7 +72,8 @@ public class MatchSearch {
                 }
 
                 // Seniority check - Job2
-                if (CalculateSeniority.calculateSeniority(job2) < criteria.getMinimumSeniority() || CalculateSeniority.calculateSeniority(job2) > criteria.getMaxSeniority()) {
+                if (CalculateSeniority.calculateSeniority(job2) < criteria.getMinimumSeniority() ||
+                        CalculateSeniority.calculateSeniority(job2) > criteria.getMaxSeniority()) {
                     continue;
                 }
 
@@ -83,22 +85,6 @@ public class MatchSearch {
                         continue;
                     }
                 }
-
-                // Transport time to old workplace START
-                TransportDetails oldTransportDetails1 = calculateTransport.calculateTransportDetails(
-                        job1.getEmployee().getHomeAddress(),
-                        job1.getWorkplace().getWorkAddress(),
-                        job1.getEmployee().getHomeAddressZip().getZipCode(),
-                        job1.getWorkplace().getWorkAddressZip().getZipCode()
-                );
-
-                TransportDetails oldTransportDetails2 = calculateTransport.calculateTransportDetails(
-                        job2.getEmployee().getHomeAddress(),
-                        job2.getWorkplace().getWorkAddress(),
-                        job2.getEmployee().getHomeAddressZip().getZipCode(),
-                        job2.getWorkplace().getWorkAddressZip().getZipCode()
-                );
-                // Transport time to old workplace STOP
 
                 // Transport time to new workplace START
                 TransportDetails newTransportDetails1 = calculateTransport.calculateTransportDetails(
@@ -121,6 +107,22 @@ public class MatchSearch {
                 if (newTransportDetails1.getTravelTime() > criteria.getTransportTime() || newTransportDetails2.getTravelTime() > criteria.getTransportTime()) {
                     continue;
                 }
+
+                // Transport time to old workplace START
+                TransportDetails oldTransportDetails1 = calculateTransport.calculateTransportDetails(
+                        job1.getEmployee().getHomeAddress(),
+                        job1.getWorkplace().getWorkAddress(),
+                        job1.getEmployee().getHomeAddressZip().getZipCode(),
+                        job1.getWorkplace().getWorkAddressZip().getZipCode()
+                );
+
+                TransportDetails oldTransportDetails2 = calculateTransport.calculateTransportDetails(
+                        job2.getEmployee().getHomeAddress(),
+                        job2.getWorkplace().getWorkAddress(),
+                        job2.getEmployee().getHomeAddressZip().getZipCode(),
+                        job2.getWorkplace().getWorkAddressZip().getZipCode()
+                );
+                // Transport time to old workplace STOP
 
                 //System.out.println("Match fundet!!!!!!");
                 matchList.add(new Match (job1, oldTransportDetails1, newTransportDetails1, salaryDifference1, job2, oldTransportDetails2, newTransportDetails2, salaryDifference2));
