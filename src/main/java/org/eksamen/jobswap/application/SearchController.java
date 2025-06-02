@@ -64,8 +64,8 @@ public class SearchController {
             validFields = false;
         } else {
             int transportInput = Integer.parseInt(transportTimeField.getText());
-            if (transportInput < 0) {
-                transportError.setText("Transporttid skal være mindst 0 minutter");
+            if (transportInput <= 0) {
+                transportError.setText("Transporttid skal være over 0 minutter");
                 validFields = false;
             } else {
                 transportError.setText("");
