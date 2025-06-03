@@ -42,7 +42,6 @@ public class SearchController {
         salaryError.setText("");
         seniorityError1.setText("");
         seniorityError2.setText("");
-
     }
 
     /**
@@ -54,7 +53,7 @@ public class SearchController {
     public void validateFields(ActionEvent event) throws Exception {
         boolean validFields = true;
 
-        // Transporttid
+        // Transport time
         if (transportTimeField.getText().isEmpty()) {
             transportError.setText("Transporttid skal udfyldes");
             validFields = false;
@@ -72,7 +71,7 @@ public class SearchController {
             }
         }
 
-        // Lønafvigelse
+        // Salary difference
         if (salaryField.getText().isEmpty()) {
             salaryError.setText("Lønafvigelse skal udfyldes");
             validFields = false;
@@ -90,7 +89,7 @@ public class SearchController {
             }
         }
 
-        // Minimum anciennitet
+        // Minimum seniority
         int minimumSeniorityInput = 0;
 
         if (minimumYearField.getText().isEmpty() || minimumMonthField.getText().isEmpty()) {
@@ -112,7 +111,7 @@ public class SearchController {
         }
 
 
-        // Max anciennitet
+        // Max seniority
         int maxSeniorityInput = 0;
 
         if (maxYearField.getText().isEmpty() || maxMonthField.getText().isEmpty()) {
