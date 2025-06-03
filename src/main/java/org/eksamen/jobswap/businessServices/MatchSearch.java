@@ -79,13 +79,12 @@ public class MatchSearch {
                 }
 
                 // Salary Difference check
+                if (calculateSalaryDifference(job1, job2) > criteria.getSalaryDifference()) {
+                    continue;
+                }
+
                 float salaryDifference1 = (job2.getMonthlySalary() - job1.getMonthlySalary());
                 float salaryDifference2 = (job1.getMonthlySalary() - job2.getMonthlySalary());
-                if (criteria.getSalaryDifference() != 0) {
-                    if (calculateSalaryDifference(job1, job2) > criteria.getSalaryDifference()) {
-                        continue;
-                    }
-                }
 
                 // Transport time to new workplace START
                 TransportDetails newTransportDetails1 = calculateTransport.calculateTransportDetails(
