@@ -72,8 +72,9 @@ public class MatchSearch {
                 }
 
                 // Seniority check - Job2
-                if (CalculateSeniority.calculateSeniority(job2) < criteria.getMinimumSeniority() ||
-                        CalculateSeniority.calculateSeniority(job2) > criteria.getMaxSeniority()) {
+                int job2Seniority = CalculateSeniority.calculateSeniority(job2);
+                if (job2Seniority < criteria.getMinimumSeniority() ||
+                        job2Seniority > criteria.getMaxSeniority()) {
                     continue;
                 }
 
@@ -104,7 +105,8 @@ public class MatchSearch {
 
 
                 // Transport time check
-                if (newTransportDetails1.getTravelTime() > criteria.getTransportTime() || newTransportDetails2.getTravelTime() > criteria.getTransportTime()) {
+                if (newTransportDetails1.getTravelTime() > criteria.getTransportTime() ||
+                        newTransportDetails2.getTravelTime() > criteria.getTransportTime()) {
                     continue;
                 }
 
@@ -125,7 +127,9 @@ public class MatchSearch {
                 // Transport time to old workplace STOP
 
                 //System.out.println("Match fundet!!!!!!");
-                matchList.add(new Match (job1, oldTransportDetails1, newTransportDetails1, salaryDifference1, job2, oldTransportDetails2, newTransportDetails2, salaryDifference2));
+
+                matchList.add(new Match (job1, oldTransportDetails1, newTransportDetails1,
+                        salaryDifference1, job2, oldTransportDetails2, newTransportDetails2, salaryDifference2));
 
             } // Job 2 iteration STOP
 
